@@ -1,0 +1,44 @@
+[
+{
+    "Formation " : "Mathématiques et informatique ",
+    "année" : "L1",
+    "description" : "MI: la spécialité sert à approfondir les connaissances des étudiants en mathématiques et informatiques  , le programme en 1ére annnée: Semestre 1:/  les modules fondamentaux   : Algo1 ,Analyse1 ,Algèbre 1 / Decouverte:MP(Mécanique de point),CRI(codification et représentation de l'information),Transversale :TCE, langue étrangère (Français) / Semestre 2:  les modules fondamentaux  : Algo2, Analyse2, Algèbre2 /  Decouverte: électricité / Secondaire: Stat,OPM(outils programmation mathématiques ),strm (structure machine)/ Transversale: Bureautique , histoire des sciences ",
+    "spécialités" : {"Licences": ["ISIL:Licence Ingénierie des Systèmes d’Information et des Logiciels "," ACAD:Licence Informatique Académique ","GTR :Licence Génie des Télécommunications et Réseaux  "," RO:Licence Recherche Opérationnelle "," Stat:Licence Ingénierie Statistique "," Alg,crypt:Licence d’Algèbre etCryptographie ","MATH:Licence Mathématiques"]},
+    "liens" : [""]
+},
+{
+    "Formation ": "Science Technologie ",
+    "année" : "L1",
+    "description" : "ST: une spécialité qui tourne au tour de la science exacte et la technologie elle-meme,  le programme en 1ére année: Semestre1/les modules fondamentaux : Math 1,PHYS 1 ,CHIM 1 /METHODOLOGIQUE :TP PHYS1 ,TP CHIM1 ,BUREAUTIQUE1 ,TRANSVERSAL:TCE1 , langue étrangère  ,Decouverte: Dec1 / Semestre2: /les modules fondamentaux:MATH 2,PHYS 2,CHIM 2 /METHODOLOGIQUE:TP PHYS2,TP CHIM2,TP bureautique 2/TRANSVERSAL:TCE2,DECOUVERTE:Dec2 ",
+    "spécialités" :  {"Licences": ["Licence Electronique Licence Télécommunication ","Licence Automatisme Licence Electrotechnique ","Licence Mécanique Energétique ","Licence Ingénieries des Systèmes de Mécaniques (Faculté de Génie Mécanique et Génie de Procédés )"," Licence Mécanique de Construction (Faculté de Génie Mécanique et Génie de Procédés)"," Licence Génie des Matériaux (Faculté de Génie Mécanique et Génie de Procédés"," Licence Analyse Physico-chimique et Mécanique des Matériaux  (Faculté de Génie Mécanique et Génie de Procédés )"," Licence Mécanique et Énergétique ","Licence Génie Alimentaire Licence Génie d’Environnement "," Licence Génie Pharmaceutique Licence Raffinage et Pétrochimie (Faculté de Génie Mécanique et Génie de Procédés)"," Licence de Génie Chimique (Faculté de Génie Mécanique et Génie de Procédés )"," Licence Froid et Cryogénie (Faculté de Génie Mécanique et Génie de Procédés) "," Licence en Génie Civil (Faculté de Génie Civil) Licence en Hydraulique (Faculté de Génie Civil)"]},
+    "liens": [""]
+},
+{
+    "Formation ": "Science de la matiére ",
+    "année":"L1",
+    "description":"SM: science de la matière ou encore physique-chimie c'est une spécialitée qui se base comme l'indique son appelation sur ''la matière'' ,la chimie étudie la composition de la matière et  la physique étudie les états de la matière.  La licence en SM apporte une solide formation en physique et en chimie qui permet à son titulaire d’intégrer de nombreux secteurs: (environnement, industrie, matériaux, énergie.)  la  spécialité appartient à les faculté de physique et chimie , le programme en 1ére année/ Semestre1les modules fondamentaux : Math 1,PHYS 1 ,CHIM 1 /METHODOLOGIQUE :TP PHYS1 ,TP CHIM1 ,BUREAUTIQUE1 ,TRANSVERSAL:TCE1 , langue étrangère  ,Decouverte: Dec1 / Semestre2: /les modules fondamentaux:MATH 2,PHYS 2,CHIM 2 /METHODOLOGIQUE:TP PHYS2,TP CHIM2,TP bureautique 2/TRANSVERSAL:TCE2,DECOUVERTE:Dec2 ",
+    "spécialités": {"Licenses": ["Licence de Physique (Faculté de Physique) "," Licence de Physique Appliquée : Energétique  (Faculté de Physique)"," Licence Chimie Fondamentale (Faculté de Chimie) ","Licence Géophysique (faculté des Science de la Terre, Géographie et Aménagement du Territoire)."]},
+    "liens":[""]
+},
+{
+    "Formation ": "Sciences de la Nature et de la Vie",
+    "année":"L1",
+    "description":"SNV: ''séance de nature et vie ''  est la science qui étudie et taxonomise tous les genres d' organismes vivants basés sur la chimie , la génétique , la cytologie , et les sciences de la microbiologie et bien plus encoreLe but de toutes ces études est d'entourer la discipline des organismes vivants dans des environnements écologiques, elle appartient à la faculté de la biologie, le programme en 1ére année: /Semestre1: les modules fondamentaux:BIOLOGIE CELLULAIRE ,CHIMIE 1, M.S.I(math statistiques informatique) /TRANSVERSAL:METHODE TRAVAIL TERMINOLOGIE 1,HISTOIRE UNIV.  SCIENCES. EXPER./DECOUVERTE,GEOLOGIE / PHYSIQUE , TCE1/  Semestre2: les modules fondamentaux:BIOLOGIE ANIMALE GENERALE ,BIOLOGIE VEGETALE GENERALE,CHIMIE 2  /TRANSVERSAL:METHODE TRAVAIL TERMINOLOGIE 2/DECOUVERTE:GEOLOGIE / PHYSIQUE TCE2",
+    "spécialités": {"Licenses": ["Licence Biologie, Physiologie et Génétique Végétales (BPGV)"," Licence Biologie du Développement (BD)"," Licence Ecologie et Environnement Marin (EEM) ","Licence Ecologie Végétale et Environnement (EVE)"," Licence de Biotechnologie et Santé (BS)"," Licence de Biochimie Fondamentale et Appliquée (BFA) "," Licence de Génétique Fondamentale et Appliquée (GFA) ","Licence de Microbiologie Fondamentale et Appliquée (MFA) "," Licence de Nutrition et Contrôle de Qualité et Analyse (NCA) ","Licence de Parasitologie et Microbiologie (PM) "," Licence de Physiologie Intégrative Animale et Humaine (PIAH)"," Licence d'Ecologie Animale (EA)"]},
+    "liens":[""]
+},
+{
+    "Formation ": "Sciences de la terre, de Géographie et Aménagement du Territoire",
+    "année":"L1",
+    "description": "Géographie et aménagement du territoire, une branche pluridisciplinaires qui englobe plusieurs domaine tell que l'urbanisme, la géographie, l'économie afin d'organiser l'espace et orienté les populations, leurs activités et les équipements dans un territoire , le programme en 1 ére année :/ Semestre 1:les modules fondamentaux:GEOLOGIE ,ANAL. ESPACE, BIOLOGIE, MATHS,PHYSIQUE,CHIMIE /TRANSVERSAL:TCE /METHODOLOGIQUETP CARTO,TP BIOLOGIE,TP PHYSIQUE,BUREAUTIQUE2/  DECOUVERTE:DEC  /   Semestre2:  GEOLOGIE,        ANAL. ESPACE, BIOLOGIE ,FONDAMENTAL -II- Sciences fondamentales ,MATHS,PHYSIQUE, CHIMIE /METHODOLOGIQUE:TP CARTO , TP BIOLOGIE ,TP PHYSIQUE, BUREAUTIQUE2 /TRANSVERSAL:TCE  DECOUVERTE: DEC",
+    "spécialités": {"Licences":["License Géologie Fondamentale "," Licence Géologie Appliquée "," Licence Recherche Minérale et Environnement "," Licence Géophysique ","Licence Géomorphologie et Protection de l'environnement ","Licence Aménagement Urbain et Protection de l’Environnement "," Licence Aménagement Régional et Développement Durable ","Licence Aménagement Rural et Développement Durable ","Licence Climat- Environnement Licence Géomatique"]},
+    "liens":[""]
+},
+{
+    "Formation ": " Géologie",
+    "année":"L1",
+    "description":"",
+    "spécialités": {"Licences": ["Licence Ressources Minérales et Environnement"," Licence Sciences de l’eau et de l’Environnement ","Licence Géologie fondamentale ","Licence Géologie Appliquée - Géotechnique"]},
+    "liens":[""]
+}
+ ]

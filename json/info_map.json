@@ -1,0 +1,119 @@
+{
+    "infos": [
+    {
+        "type": 3,
+        "title": "Le Rectorat",
+        "description": "Le bâtiment regroupe les services centraux de l université : Cabinet du Recteur et salle du Conseil Les Vice- Rectorats Le secrétariat général de l université (Secrétaire Général, administrations du personnel et des finances) Services centraux de la scolarité.",
+        "images": ["images/map/map.png"],
+        "position": [36.71401532272623,3.177216118935273]
+    },
+    {
+        "type": 4,
+        "title": "Le Bloc Pédagogique",
+        "description": " Est composé de: deux batiments Le bâtiment des classes A (salles 100 et 200) et le bâtiment des classes B (salles 300 et 400) -Les vingt-quatre amphithéâtres,-La Bibliothèque Universitaire, -L auditorium",
+        "images": ["images/map/map.png"],
+        "position": [36.711374908282366,3.180649346438428]
+    },
+    {
+        "type": 4,
+        "title": "La Bibliothèque Universitaire",
+        "description": "elle s'étend sur 7200 m² ; elle est ouverte aux étudiants (salle de 1200 places), aux enseignants et étudiants de post-graduation (salle de 72 places). Elle comprend divers services : acquisition, traitement, orientation et autres services administratifs. Elle dispose également d un service de recherche bibliographique automatisée, et d un service d informatique qui prête aide et assistance aux usagers afin d accéder aux différentes bases de données bibliographiques. Un espace internet et un accès Wifi sont également mis à la disposition des étudiants.",
+        "images": ["images/map/map.png"],
+        "position": [36.71378310751998,3.181121415172571]
+    },
+    {
+        "type": 4,
+        "title": "L'auditorium",
+        "description": "En forme de trapèze, l auditorium recouvre une superficie de 3276 m² ; il comporte : - Une salle de conférences (1800 places) - Un hall d exposition Il est entouré de deux plans d'eau.",
+        "images": ["images/map/map.png"],
+        "position": [36.71464316036565,3.179050749889226]
+    },
+    {
+        "type": 4,
+        "title": "Le Village Universitaire",
+        "description": "Situé dans l'enceinte de l Université, il regroupe, sur ses 1800 m², tous les services utiles à la vie estudiantine : Trois restaurants Une aire d exposition Une poste Une salle d'internet (Mezzanine) Une salle Wifi Une salle polyvalente (Théâtre, cinéma 700 places) - Une place ouverte (Jardin) Une librairie (O.P.U.).",
+        "images": ["images/map/map.png"],
+        "position": [36.712080174481734,3.1774414245394755]
+    },
+    {
+        "type": 4,
+        "title": "La salle omnisports",
+        "description": "située près du village universitaire, permet certaines activités sportives en salle.",
+        "images": ["images/map/map.png"],
+        "position": [36.71311225962239,3.17541635673254] 
+    },
+    {
+        "type": 4,
+        "title": "Espace Internet",
+        "description": "entre le bâtiment d'Informatique et le Hall de Technologie Maison de la Science - Espace pour les rencontres scientifiques et les Sociétés Savantes domiciliées à l USTHB.",
+        "images": ["images/map/map.png"],
+        "position": [36.715195859273045,3.186189881478596]
+    },
+    {
+        "type": 2,
+        "title": "Faculté des Sciences Biologiques",
+        "description": "La Faculté des Sciences Biologiques est engagée dans la dynamique de la réforme universelle du LMD avec la proposition de 22 formations dans le domaine des Sciences de la Nature et de la Vie (SNV) dans toute sa diversité,Dans le cas du « Premier Cycle du système LMD », les étudiants reçoivent des enseignements sur les bases fondamentales de la biologie au cours de deux années de tronc commun (L1 et L2). Le passage en L3, se fait selon une orientation basée sur le vœu et le classement de l’étudiant tout en tenant compte des capacités d’accueil des formations de licences agréées,suivi d'un cycle master,Des formations doctorales « Troisième Cycle du LMD » ont été ouvertes en 2010-2011.",
+        "images": ["images/map/map.png"],
+        "position": [36.712693096705365,3.183690062696445] 
+    },
+    {
+        "type": 2,
+        "title": "Faculté de Chimie",
+        "description": "La faculté de chimie (ex- institut de chimie),ses missions principales sont orientées vers la recherche et la pédagogie.Les enseignements de base sont assurés à la majorité des étudiants de 1ère année LMD. Des enseignements approfondis sont assurés pour les étudiants de Licence et de Master ainsi que des enseignements de post-graduation débouchant aux diplômes de Magister et de Doctorat, La Chimie intervient dans plusieurs domaines tels que : les hydrocarbures, les produits pharmaceutiques, l’eau, l’agriculture, l’agro-alimentaire, les détergents, les cosmétiques, la métallurgie, l’hydro-métallurgie, la corrosion…. Elle est également la base de toute l’analyse de type contrôle de la qualité. Pour integrer la faculté de chimie il faut passer par la 1ère année licence tranc commun science de la matière (SM) L1 : science de la matière L2 :physique  Geophysique  Chimie fondamentale L3 : Chimie fondamentale Master : Chimie des produits naturelles et des médicaments Analyse et Contôle Chimie Macromoléculaire Chimie physique des matérieaux inorganique Chimie théorique Chimie criminalistique Chimie de papetrie ",
+        "images": ["images/map/map.png"],
+        "position": [36.71334244670668,3.183716884785607] 
+    },
+    {
+        "type": 2,
+        "title": "Faculté de Physique",
+        "description": "La Faculté de Physique est une unité d’enseignement et de recherche de l’Université, Dans la nouvelle reforme des enseignements LMD, la physique fait partie avec la chimie du Domaine Sciences de la Matière (SM).La faculté de Physique est organisée en quatre départements :• Département de Physique des Rayonnements, • Département des Matériaux et Composants,• Département d’Energétique et Mécanique des Fluides,  • Département de Physique Théorique.",
+        "images": ["images/map/map.png"],
+        "position": [36.71399609149645,3.18365787618945]
+    },
+    {
+        "type": 2,
+        "title": "Faculté de Génie Civil",
+        "description": "La faculté de génie civil dispose de deux départements : le département Géotechnique et Hydraulique,Ces formations, licences et masters, comportent des enseignements théoriques appuyés par des expérimentations dans les laboratoires de travaux pratiques, des sorties sur le terrain et des stages à l’université et/ou en entreprise. Le domaine d’application du génie civil est très vaste ; il englobe les travaux publics et le Bâtiment. Il comprend notamment : les constructions industrielles, les infrastructures de transport, les constructions hydrauliques, les infrastructures urbaines.",
+        "images": ["images/map/map.png"],
+        "position": [36.71501095005206,3.183153620889915]
+    },
+    {
+        "type": 2,
+        "title": " Faculté de Mathématiques",
+        "description": "est située entre la faculté d'informatique et El Djorf-petit Les départements de la faculté :Algèbre et Théorie des Nombres, Analyse, Probabilités et statistiques, Recherche opérationnelle. les spécialités affiliées à cette faculté on trouve : 1. RO: recherche opérationnel 2. Proba stat: probabilités et statistiques 3. Alg.cryp: Algèbre et cryptographie 4. Math .pure :Mathématiques ",
+        "images": ["images/map/map.png"],
+        "position": [36.71721263096645,3.183856359600722]
+    },
+    {
+        "type": 2,
+        "title": "Faculté de Génie Mécanique et Génie des Procédés",
+        "description": "Elle abrite deux filières : Le Génie des Procédés, portant sur tous les procédés industriels tels que le génie alimentaire, le génie de l’environnement et la protection de l’environnement, le génie pharmaceutique, le développement durable, le génie chimique, la cryogénie, le génie du raffinage, la pétrochimie et la gestion des eaux.Le Génie Mécanique, portant sur la construction Mécanique, la maintenance industrielle, la fabrication mécanique, l’ingénierie du soudage, l’énergétique, les installations énergétiques et turbomachines, le génie climatique et froid, les énergies renouvelables, le génie des matériaux, l’expertise et contrôle des matériaux ainsi que les procédés de fabrication des matériaux.",
+        "images": ["images/map/map.png"],
+        "position": [36.71651601219259,3.180525056100303] 
+    },
+    {
+        "type": 2,
+        "title": "Faculté des Sciences de la Terre, Géographie et Aménagement du Territoire",
+        "description": "la Faculté regroupe l’ensemble des disciplines des Sciences de la Terre. Le point commun à l’ensemble de ces disciplines est l’étude du sol et du sous-sol.La faculté comprend trois (03) départements :Département Géologie, Département Géophysique, Département Géographie et Aménagement du Territoire",
+        "images": ["images/map/map.png"],
+        "position": [36.71624080303866,3.181356540864341]
+    },
+    {
+        "type": 2,
+        "title": "Faculté d Electronique et d Informatique",
+        "description": "La faculté d’électronique a été crée en 1974. Ses missions principales sont orientées vers la recherche et la pédagogie. Les enseignement de base sont assurés à la grande partie des étudiants de la 1ère année LMD. Des enseignements approfondis sont assurés pour les étudiants de Licence et Master ainsi que des enseignements de poste de graduation débouchant aux diplômes de Magister et de Doctorat,Les Départements de la Faculté: -Informatique -Instrumentation et Automatique -Télécommunication -Electrotechnique Formation:  Les formations proposées dans la discipline Electronique sont :Licence (Nouveau Programme Socle commun) Licence (ancien Programme)  Master :Energies renouvelables / Energie Solaire, Génie des Systèmes Industriels et Tertiaires, Electrotechnique Industrielle, Réseaux Electriques, Contrôle de Processus et Robotique, Automatisation Industries et Process, Electronique et Photonique Appliquée, Ingénierie de l’Instrumentation Electronique, Télécommunication, Réseaux et Multimédia. Systèmes Intelligents de Communication. Systèmes de Télécommunications. Les formations proposées dans la discipline informatique sont : Licence : Licence Informatique académique(LIG), Licence Ingénierie des Systèmes d’Information et des Logiciels(ISIL), Licence Génie des Télécommunications et Réseaux(GTR). Master : Master Ingénierie du Logiciel (IL), Master Réseaux et Systèmes Distribués (RSD), Master Systèmes Informatiques Intelligents (SII), Master Sécurité des Systèmes Informatiques (SSI), Master Architectures Parallèles et Calcul Intensif         ",
+        "images": ["images/map/map.png"],
+        "position": [36.71607739713705,3.182118288196556]  
+    },
+    
+    {
+        "type": 0,
+        "title": "Entrée El-Djorf",
+        "description": "Entrée du coté d'El Djorf",
+        "images": ["images/map/map.png"],
+        "position": [36.71501095005206,3.183153620889915]
+    }
+
+    
+]
+}

@@ -1,0 +1,6 @@
+./icon_faculty_marker.png
+./icon_food_marker.png
+./icon_administration_marker.png
+./test_test.txt
+./icon_entry_marker.png
+./icon_other_marker.png

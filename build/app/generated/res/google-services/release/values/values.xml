@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">619360108289-1hqpr24ouk1e967ru0ef5leba257s9ok.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">619360108289</string>
+    <string name="google_api_key" translatable="false">AIzaSyBg1SE4uCeyiF155Ck7N2m52Byn0s_VW4M</string>
+    <string name="google_app_id" translatable="false">1:619360108289:android:e8c4423a4bee79ae8ea500</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBg1SE4uCeyiF155Ck7N2m52Byn0s_VW4M</string>
+    <string name="google_storage_bucket" translatable="false">project-initiative-club-app.appspot.com</string>
+    <string name="project_id" translatable="false">project-initiative-club-app</string>
+</resources>

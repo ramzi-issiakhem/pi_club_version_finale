@@ -1,0 +1,4 @@
+#Thu Aug 19 18:04:04 CET 2021
+base.0=/home/inaryo/Projects/app/project_initiative_club_app/build/app/intermediates/dex/release/minifyReleaseWithR8/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

@@ -23,8 +23,7 @@ class _SpecificNewsPageState extends State<SpecificNewsPage> {
     NewsEntity news = widget.news;
     double screenH = MediaQuery.of(context).size.height;
     double screenW = MediaQuery.of(context).size.width;
-    String editedString =
-        "Edité le : " + DateFormat('dd-MM-yyyy').format(news.lastModification);
+    String editedString = DateFormat('dd-MM-yyyy').format(news.lastModification);
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
@@ -41,32 +40,86 @@ class _SpecificNewsPageState extends State<SpecificNewsPage> {
                 style: TextStyle(fontSize: 30, color: mainColor),
               ),
             ),
-            body: ListView(children: [
-              carouselWidget(
-                  <String>[widget.news.coverImage] + widget.news.images,
-                  screenH,
-                  screenW),
-              SizedBox(height: screenH * 0.05),
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                Text(editedString),
-                TextButton(
-                    onPressed: () {
-                      setState(() {
-                        isLiked = !isLiked;
-                      });
-                    },
-                    child: Row(children: [
-                      Icon(isLiked
-                          ? Icons.favorite
-                          : Icons.favorite_outline_outlined),
-                      Text(news.likes.toString() + " J'aime")
-                    ])),
+            body: Container(
+              padding: EdgeInsets.all(10),
+              child: ListView(children: [
+                carouselWidget(
+                    <String>[widget.news.coverImage] + widget.news.images,
+                    screenH,
+                    screenW),
+                Container(
+                  padding: EdgeInsets.only(left: 20,right: 10),
+                  height: MediaQuery.of(context).size.height*0.53,
+                  decoration: BoxDecoration(
+                    color: mainColor,
+                    borderRadius:BorderRadius.circular(30),
+                  ),
+                  child: Column(
+                    children: [
+
+                      SizedBox(height: screenH * 0.02),
+
+                      Container(
+                          alignment: Alignment.topLeft,
+                          child: Text(news.title,style: TextStyle(color: Colors.white,fontSize: 20),)),
+                      SizedBox(height: 10,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Container(
+                            height: 3,
+                            width: 50,
+                            color: Colors.white,
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+
+                      SizedBox(height: MediaQuery.of(context).size.height*0.34,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              news.description + "\n Test",
+                              textAlign: TextAlign.start,
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Container(
+                            height: 2,
+                            width: 200,
+                            color: Colors.white,
+                          ),
+                        ],
+                      ),
+                      Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                        Text(editedString,style: TextStyle(color: Colors.white,fontSize: 15),),
+                        TextButton(
+                            onPressed: () {
+                              setState(() {
+                                isLiked = !isLiked;
+                              });
+                            },
+                            child: Row(children: [
+                              Icon(isLiked
+                                  ? Icons.favorite
+                                  : Icons.favorite_outline_outlined,color: Colors.white,),
+                              Text(news.likes.toString() + " J'aime",style: TextStyle(color: Colors.white),)
+                            ])),
+                      ]),
+                    ],
+                  ),
+                ),
+
               ]),
-              Text("Article par : "),
-              SizedBox(
-                height: 50,
-              ),
-              Text(news.description + "\n Test"),
-            ])));
+            )));
   }
 }

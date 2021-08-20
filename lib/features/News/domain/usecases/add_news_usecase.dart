@@ -26,6 +26,7 @@ class AddNewsParam {
   final int likes;
   final DateTime lastModification;
   final int type;
+  bool isClicked=false;
   AddNewsParam(
       {required this.type,
       required this.coverImage,
@@ -33,5 +34,7 @@ class AddNewsParam {
       required this.images,
       required this.title,
       required this.description,
-      required this.likes});
+      required this.likes,
+      required this.isClicked
+      });
 }

@@ -55,8 +55,8 @@ Map<int, String> mapFilter = {
   4: "Autre"
 };
 
-Color mainColor = Colors.orange.shade800;
-Color secondColor = Colors.blue.shade600;
+Color mainColor = Color(0xffEB5B25);
+Color secondColor = Color(0xff164C9C);
 BitmapDescriptor iconAdminsitration = BitmapDescriptor.defaultMarkerWithHue(0);
 BitmapDescriptor iconEntry = BitmapDescriptor.defaultMarkerWithHue(0);
 BitmapDescriptor iconFood = BitmapDescriptor.defaultMarkerWithHue(0);
@@ -66,7 +66,7 @@ var mapStyle = "";
 
 Map<String, dynamic> polylinesJson = {};
 Map<String, Polyline> routingDataBase = {};
-late MainClass mainClass;
+late MainClass mainClass=MainClass();
 Map<String, Widget> mapRoutes = {
   "about": AboutUsPageSecondary(),
   "map": MapsPage(),

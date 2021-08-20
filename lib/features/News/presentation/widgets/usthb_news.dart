@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project_initiative_club_app/features/News/domain/entities/newsEntity.dart';
 import 'package:project_initiative_club_app/features/News/presentation/blocs/news/newsbloc_bloc.dart';
+import 'package:project_initiative_club_app/features/News/presentation/pages/add_news_page.dart';
 import 'package:project_initiative_club_app/features/News/presentation/widgets/news_card.dart';
 import 'package:project_initiative_club_app/injections.dart';
 import 'package:project_initiative_club_app/ressources/widgets/loading.dart';
@@ -40,14 +41,22 @@ class UsthbNewsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-          itemCount: entries.length,
-          itemBuilder: (BuildContext context, int index) {
-            return Center(
-                child: NewsCard(
-                    color: Colors.blue.shade600, news: entries[index]));
-          }),
-    );
+    return
+        Expanded(
+          child: ListView.builder(
+            shrinkWrap: true,
+              itemCount: entries.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Center(
+                    child: NewsCard(
+                        color: Colors.blue.shade600, news: entries[index]));
+              }),
+        );
+        //FloatingActionButton(child: Icon(Icons.add),onPressed: (){
+         // Navigator.of(context).push(MaterialPageRoute(
+          //    builder: (BuildContext context) => AddNewsPage()));
+       // }),
+
+
   }
 }

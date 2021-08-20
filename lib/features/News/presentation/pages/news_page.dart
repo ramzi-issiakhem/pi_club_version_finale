@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:project_initiative_club_app/features/News/presentation/pages/add_news_page.dart';
 import 'package:project_initiative_club_app/features/News/presentation/widgets/pi_news.dart';
@@ -14,39 +15,57 @@ class NewsPage extends StatefulWidget {
   _NewsPageState createState() => _NewsPageState();
 }
 
-List<bool> clickedBtns = [false, false, false];
+List<bool> clickedBtns = [false, false];
 
 class _NewsPageState extends State<NewsPage> {
   double elevationValue = 5;
   @override
   Widget build(BuildContext context) {
     double screenW = MediaQuery.of(context).size.width;
-    return Column(
-      children: [
-        SizedBox(
-          width: screenW,
-          height: 60,
-          child: DecoratedBox(
-            decoration: BoxDecoration(color: mainColor),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+    return  Column(
+        children: [
+          Container(
+            width: screenW,
+            height: 40,
+            child: DecoratedBox(
+              decoration: BoxDecoration(color: mainColor,borderRadius: BorderRadius.only(bottomLeft: Radius.circular(15) ,bottomRight:Radius.circular(15))),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  _container(0, "PI News"),
+                  _container(1, "Usthb News"),
+                ],
+              ),
+            ),
+          ),
+          Container(
+            height: MediaQuery.of(context).size.height*0.76,
+            child: Stack(
               children: [
-                _container(0, "PI News"),
-                _container(1, "Usthb News"),
-                _container(2, "Add News")
+                _widget(),
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: FloatingActionButton(child: Icon(Icons.add),backgroundColor: mainColor,onPressed: (){
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (BuildContext context) => AddNewsPage()));
+                    }),
+                  ),
+                )
               ],
             ),
           ),
-        ),
-        _widget()
-      ],
-    );
+
+
+        ],
+      );
   }
 
   void onClickeBtn(int index) {
     setState(() {
-      clickedBtns = [false, false, false];
+      clickedBtns = [false, false];
       clickedBtns[index] = true;
     });
   }
@@ -54,29 +73,33 @@ class _NewsPageState extends State<NewsPage> {
   Widget _widget() {
     if (clickedBtns[0]) {
       return PiNews();
-    } else if (clickedBtns[1]) {
+    } else{
       return UsthbNews();
-    } else {
-      return AddNewsPage();
     }
   }
 
   Widget _container(int index, String text) {
-    return Container(
-        child: TextButton(
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(mainColor),
+    return Padding(
+      padding: const EdgeInsets.all(4.0),
+      child: Container(
+          child: TextButton(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(mainColor),
+            ),
+            onPressed: () {
+              onClickeBtn(index);
+            },
+            child: Text(text, style: TextStyle(color: Colors.white,fontSize: 16 )),
           ),
-          onPressed: () {
-            onClickeBtn(index);
-          },
-          child: Text(text, style: TextStyle(color: Colors.white)),
-        ),
-        decoration: BoxDecoration(
-          border: Border(
-              bottom: clickedBtns[index]
-                  ? BorderSide(color: Colors.white, width: 4)
-                  : BorderSide(width: 0, color: mainColor)),
-        ));
+          decoration: BoxDecoration(
+            border: Border(
+                bottom: clickedBtns[index]
+                    ? BorderSide(color: Colors.white, width: 1)
+                    : BorderSide(width: 0, color: mainColor)
+
+            ),
+
+          )),
+    );
   }
 }

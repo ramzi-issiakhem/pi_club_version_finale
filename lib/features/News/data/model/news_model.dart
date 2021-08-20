@@ -12,21 +12,25 @@ class NewsModel extends NewsEntity {
   final String description;
   final int likes;
   final DateTime lastModification;
-
+  bool isClicked=false;
   NewsModel(
       {required this.coverImage,
       required this.lastModification,
       required this.images,
       required this.title,
       required this.description,
-      required this.likes})
+      required this.likes,
+        required isClicked
+      })
       : super(
             title: title,
             coverImage: coverImage,
             lastModification: lastModification,
             images: images,
             description: description,
-            likes: likes);
+            likes: likes,
+            isClicked: isClicked
+    );
 
   factory NewsModel.fromFirestore(dynamic data) {
     Timestamp t = data["lastModification"];
@@ -40,7 +44,9 @@ class NewsModel extends NewsEntity {
         images: list,
         title: data["title"],
         description: data["description"],
-        likes: data["likes"]);
+        likes: data["likes"],
+        isClicked: data["isClicked"]
+    );
   }
 
   factory NewsModel.fromParams(
@@ -51,7 +57,9 @@ class NewsModel extends NewsEntity {
         images: images,
         title: param.title,
         description: param.description,
-        likes: param.likes);
+        likes: param.likes,
+        isClicked: param.isClicked
+    );
   }
 
   Map<String, dynamic> toJson() {
@@ -61,7 +69,8 @@ class NewsModel extends NewsEntity {
       'likes': likes,
       'description': description,
       'lastModification': lastModification,
-      'images': List<String>.of(images)
+      'images': List<String>.of(images),
+      'isClicked':isClicked
     };
   }
 }

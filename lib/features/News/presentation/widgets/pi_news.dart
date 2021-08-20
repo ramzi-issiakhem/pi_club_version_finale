@@ -35,13 +35,17 @@ class ClubNewsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: ListView.builder(
-          itemCount: entries.length,
-          itemBuilder: (BuildContext context, int index) {
-            return Center(
-                child: NewsCard(
-                    color: Colors.orange.shade800, news: entries[index]));
-          }),
+          child: ListView.builder(
+              itemCount: entries.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Center(
+                    child: Container(
+                      padding: EdgeInsets.only(top: 20),
+                      child: NewsCard(
+                          color: Colors.orange.shade800, news: entries[index]),
+                    ));
+              }),
     );
+
   }
 }

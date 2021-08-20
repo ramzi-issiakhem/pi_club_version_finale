@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:project_initiative_club_app/features/News/domain/entities/newsEntity.dart';
 import 'package:project_initiative_club_app/features/News/presentation/widgets/likes_title.dart';
 import 'package:project_initiative_club_app/features/News/presentation/widgets/specific_news.dart';
+import 'package:project_initiative_club_app/ressources/globals.dart';
 
 class NewsCard extends StatelessWidget {
   final NewsEntity news;
@@ -18,73 +19,76 @@ class NewsCard extends StatelessWidget {
     double cardSizeW = sizeW * 0.9;
     BorderRadius borderRadius = BorderRadius.all(Radius.circular(20));
 
-    return ConstrainedBox(
-      constraints: BoxConstraints.tightFor(height: cardSizeH + cardSizeH * 0.9),
-      child: InkWell(
-        onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: (BuildContext context) => SpecificNewsPage(news: news)));
-        },
-        child: Stack(
-          clipBehavior: Clip.none,
-          children: <Widget>[
-            Container(
-              height: cardSizeH,
-              width: cardSizeW,
-              decoration: BoxDecoration(
-                  border: Border.all(
-                    color: color,
-                  ),
-                  borderRadius: borderRadius),
-              child: ClipRRect(
-                borderRadius: borderRadius,
-                child: CachedNetworkImage(
-                    fit: BoxFit.cover,
-                    placeholder: (context, url) => CircularProgressIndicator(),
-                    imageUrl: news.coverImage),
-              ),
-            ),
-            Positioned(
-                top: cardSizeH * 0.8,
-                left: 0,
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: ConstrainedBox(
+        constraints: BoxConstraints.tightFor(height: cardSizeH + cardSizeH * 0.7),
+        child: InkWell(
+          onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (BuildContext context) => SpecificNewsPage(news: news)));
+          },
+          child: Stack(
+            clipBehavior: Clip.none,
+            children: <Widget>[
+              Container(
+                height: cardSizeH,
+                width: cardSizeW,
+                decoration: BoxDecoration(
+                    border: Border.all(
+                      color: color,
+                    ),
+                    borderRadius: borderRadius),
                 child: ClipRRect(
                   borderRadius: borderRadius,
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints.tightFor(
-                        width: cardSizeW, height: cardSizeH * 0.9),
-                    child: Container(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: cardSizeW * 0.1,
-                          vertical: cardSizeH * 0.1),
-                      color: color,
-                      width: cardSizeW,
-                      height: cardSizeH * 0.7,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          LikesAndModificationWidget(news),
-                          Text(
-                            news.title,
-
-                            textAlign: TextAlign.center,
-                            // overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                                decoration: TextDecoration.underline,
-                                color: Colors.white,
-                                fontSize: 16),
-                          ),
-                          SizedBox(height: cardSizeH * 0.075),
-                          Text(news.description,
-                              overflow: TextOverflow.ellipsis,
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 14))
-                        ],
+                  child: CachedNetworkImage(
+                      fit: BoxFit.cover,
+                      placeholder: (context, url) => SizedBox(width: 30,height: 30,child: Center(child: CircularProgressIndicator(color: mainColor,))),
+                      imageUrl: news.coverImage),
+                ),
+              ),
+              Positioned(
+                  top: cardSizeH * 0.9,
+                  left: 0,
+                  child: ClipRRect(
+                    borderRadius: borderRadius,
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints.tightFor(
+                          width: cardSizeW, height: cardSizeH * 0.9),
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: cardSizeW * 0.09,
+                            vertical: cardSizeH * 0.1),
+                        color: Color(0xffEB5B25),
+                        width: cardSizeW,
+                        height: cardSizeH * 0.7,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            LikesAndModificationWidget(news),
+                            SizedBox(height: 15,),
+                            Text(
+                              news.title,
+                              textAlign: TextAlign.left,
+                              overflow: TextOverflow.fade,
+                              style: TextStyle(
+                                  decoration: TextDecoration.none,
+                                  color: Colors.white,
+                                  fontSize: 18),
+                            ),
+                            SizedBox(height: cardSizeH * 0.075),
+                            Text(news.description,
+                                overflow: TextOverflow.fade,
+                                style:
+                                    TextStyle(color: Colors.white, fontSize: 12))
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                )),
-          ],
+                  )),
+            ],
+          ),
         ),
       ),
     );

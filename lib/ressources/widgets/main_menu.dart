@@ -59,18 +59,23 @@ class _MainMenuState extends State<MainMenu>
             return Scaffold(
               appBar: AppBar(
                 backgroundColor: globals.mainColor,
+                elevation: 0,
                 title: Row(
                   children: [
-                    Transform.rotate(
-                        angle: mainAnimController.value * math.pi * 2,
-                        child: IconButton(
-                            onPressed: () {
-                              reverseAnimation
-                                  ? mainAnimController.reverse()
-                                  : mainAnimController.forward();
-                            },
-                            icon: Icon(Icons.reorder))),
-                    Text("Project Initiative Club")
+                    GestureDetector(
+                      onTap:(){
+                        reverseAnimation
+                            ? mainAnimController.reverse()
+                            : mainAnimController.forward();
+                      },
+                      child: CircleAvatar(
+                        backgroundImage:AssetImage("images/logowhite.png"),
+                        backgroundColor: globals.mainColor,
+
+                      ),
+                    ),
+
+                    Align(alignment: Alignment.center,child: Text("Project Initiative Club",textAlign: TextAlign.center,style: TextStyle(fontSize: 23),))
                   ],
                 ),
               ),

@@ -15,99 +15,122 @@ class AboutUsPageSecondary extends StatelessWidget {
     double screenW = MediaQuery.of(context).size.width;
     double screenH = MediaQuery.of(context).size.height;
 
-    return ListView(children: [
-      Center(
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(8.0),
-          child: Image.asset(
-            'images/pi/logo.png',
-            height: 150.0,
-            width: 100.0,
-          ),
+    return Scaffold(
+      body: ListView(children: [
+        SizedBox(height: 20,),
+        Center(
+          child: CircleAvatar(
+            radius: 50,
+            backgroundColor: mainColor,
+            backgroundImage: AssetImage("images/logowhite.png"),
+          )
         ),
-      ),
-      SizedBox(
-        height: 5,
-      ),
-      Center(
-        child: Text(
-          "Project Initiative Club",
-          style: TextStyle(color: mainColor),
+        SizedBox(
+          height: 10,
         ),
-      ),
-      SizedBox(
-        height: 10,
-      ),
-      Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25),
+        Center(
           child: Text(
-            "Project Initiative est une famille universitaire à caractère entrepreneurial fondé en 2014 par des étudiants ambitieux, volontaires, visant à la promotion de l’esprit d’engagement, d’initiative et de leadership au sein de la communauté universitaire.",
+            "Project Initiative Club",
+            style: TextStyle(color: mainColor,fontSize: 20),
           ),
         ),
-      ),
-      SizedBox(
-        height: 15,
-      ),
-      Center(
-        child: Text(
-          "PI en Chiffres",
-          style: TextStyle(color: mainColor),
+        SizedBox(
+          height: 10,
         ),
-      ),
-      SizedBox(
-        height: 7,
-      ),
-      Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          column("140", "Membres"),
-          VerticalDivider(
-            width: 5,
-            thickness: 5,
-            color: Colors.blueAccent,
+        Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal:25,vertical: 30 ),
+            child: Container(
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                boxShadow: [BoxShadow(
+                  offset: Offset.fromDirection(2,8),
+                  color: secondColor,
+                ),],
+                color: mainColor,
+                borderRadius: BorderRadius.circular(20)
+              ),
+              child: Text(
+                "Project Initiative est une famille universitaire à caractère entrepreneurial fondé en 2014 par des étudiants ambitieux, volontaires, visant à la promotion de l’esprit d’engagement, d’initiative et de leadership au sein de la communauté universitaire.",
+                style:  TextStyle(color: Colors.white),textAlign: TextAlign.center,
+              ),
+            ),
           ),
-          column("25k", "Abonnés"),
-          VerticalDivider(
-            width: 5,
-            thickness: 5,
-            color: Colors.blueAccent,
-          ),
-          column("60", "Evenements")
-        ],
-      ),
-      SizedBox(
-        height: 25,
-      ),
-      Center(
-        child: Text(
-          "PI History",
-          style: TextStyle(color: mainColor),
         ),
-      ),
-      SizedBox(
-        height: 15,
-      ),
-      carouselWidget([
-        'images/pi/image_2.png',
-        'images/pi/image_2.png',
-        'images/pi/image_2.png',
-        'images/pi/image_2.png'
-      ], screenH, screenW)
-      /*imageWidget('images/pi/image_2.png', screenW),
-      SizedBox(
-        height: 5,
-      ),
-      imageWidget('images/pi/image_2.png', screenW),
-      SizedBox(
-        height: 5,
-      ),
-      imageWidget('images/pi/image_2.png', screenW),
-      SizedBox(
-        height: 5,
-      )*/
-    ]);
+        SizedBox(
+          height: 15,
+        ),
+        Center(
+          child: Text(
+            "PI en Chiffres",
+            style: TextStyle(color: mainColor,fontSize: 15),
+          ),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Container(
+          padding: EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            border: Border(
+              top: BorderSide(width: 1,color: mainColor),
+              left: BorderSide(width: 1,color: mainColor),
+              right: BorderSide(width: 1,color: mainColor),
+              bottom: BorderSide(width: 1,color: mainColor),
+            )
+          ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              column("140", "Membres"),
+              VerticalDivider(
+                width: 5,
+                thickness: 5,
+                color: Colors.blueAccent,
+              ),
+              column("25k", "Abonnés"),
+              VerticalDivider(
+                width: 5,
+                thickness: 5,
+                color: Colors.blueAccent,
+              ),
+              column("60", "Evenements")
+            ],
+          ),
+        ),
+        SizedBox(
+          height: 25,
+        ),
+        Center(
+          child: Text(
+            "PI History",
+            style: TextStyle(color: mainColor),
+          ),
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        carouselWidget([
+          'images/pi/image_2.png',
+          'images/pi/image_2.png',
+          'images/pi/image_2.png',
+          'images/pi/image_2.png'
+        ], screenH, screenW)
+        /*imageWidget('images/pi/image_2.png', screenW),
+        SizedBox(
+          height: 5,
+        ),
+        imageWidget('images/pi/image_2.png', screenW),
+        SizedBox(
+          height: 5,
+        ),
+        imageWidget('images/pi/image_2.png', screenW),
+        SizedBox(
+          height: 5,
+        )*/
+      ]),
+    );
 
     /* SingleChildScrollView(
       child: Column(

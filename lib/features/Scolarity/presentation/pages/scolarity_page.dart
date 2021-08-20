@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_initiative_club_app/features/Scolarity/presentation/pages/specific_page.dart';
 import 'package:project_initiative_club_app/features/Scolarity/presentation/widgets/choice_widgets.dart';
+import 'package:project_initiative_club_app/ressources/globals.dart';
 
 /*class ScolarityPage extends StatefulWidget {
   const ScolarityPage({Key? key}) : super(key: key);
@@ -70,14 +71,14 @@ class _ScolarityPageState extends State<ScolarityPage> {
     double screenW = MediaQuery.of(context).size.width;
     double screenH = MediaQuery.of(context).size.height;
 
-    return Column(children: [
-      DropDownMenu(),
-      Divider(
-        height: 50,
-        thickness: 10,
-      ),
-      SpecificScolarityPage(
-          value: _chosenValue, screenH: screenH, screenW: screenW)
-    ]);
+    return  Column(children: [
+        DropDownMenu(),
+        Divider(
+          height: 50,
+          thickness: 10,
+        ),
+        SpecificScolarityPage(
+            value: _chosenValue, screenH: screenH, screenW: screenW)
+      ]);
   }
 }

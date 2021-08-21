@@ -12,8 +12,6 @@ Widget LikesAndModificationWidget(NewsEntity news) {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           GestureDetector(onTap: () {
-            if()
-            news.isClicked=!news.isClicked;
           }, child: Icon(Icons.favorite,color: Colors.white,)),
           SizedBox(width: 5,),
           Text(news.likes.toString(),style: TextStyle(fontSize: 15,color: Colors.white),)

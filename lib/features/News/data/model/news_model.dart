@@ -1,7 +1,5 @@
-import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dartz/dartz.dart';
 import 'package:project_initiative_club_app/features/News/domain/entities/newsEntity.dart';
 import 'package:project_initiative_club_app/features/News/domain/usecases/add_news_usecase.dart';
 
@@ -12,7 +10,6 @@ class NewsModel extends NewsEntity {
   final String description;
   final int likes;
   final DateTime lastModification;
-  bool isClicked=false;
   NewsModel(
       {required this.coverImage,
       required this.lastModification,
@@ -20,7 +17,6 @@ class NewsModel extends NewsEntity {
       required this.title,
       required this.description,
       required this.likes,
-        required isClicked
       })
       : super(
             title: title,
@@ -29,7 +25,6 @@ class NewsModel extends NewsEntity {
             images: images,
             description: description,
             likes: likes,
-            isClicked: isClicked
     );
 
   factory NewsModel.fromFirestore(dynamic data) {
@@ -45,7 +40,6 @@ class NewsModel extends NewsEntity {
         title: data["title"],
         description: data["description"],
         likes: data["likes"],
-        isClicked: data["isClicked"]
     );
   }
 
@@ -58,7 +52,6 @@ class NewsModel extends NewsEntity {
         title: param.title,
         description: param.description,
         likes: param.likes,
-        isClicked: param.isClicked
     );
   }
 
@@ -70,7 +63,6 @@ class NewsModel extends NewsEntity {
       'description': description,
       'lastModification': lastModification,
       'images': List<String>.of(images),
-      'isClicked':isClicked
     };
   }
 }

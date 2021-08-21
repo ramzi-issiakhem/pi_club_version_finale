@@ -19,13 +19,12 @@ class _ScolarityPageState extends State<ScolarityPage> {
 
 class ScolarityPage extends StatefulWidget {
   ScolarityPage({Key? key}) : super(key: key);
-
   @override
   _ScolarityPageState createState() => _ScolarityPageState();
 }
 
 class _ScolarityPageState extends State<ScolarityPage> {
-  String _chosenValue = "Biologie";
+  String _chosenValue = "Math&Info";
 
   List<String> items = [
     "Math&Info",
@@ -72,13 +71,121 @@ class _ScolarityPageState extends State<ScolarityPage> {
     double screenH = MediaQuery.of(context).size.height;
 
     return  Column(children: [
-        DropDownMenu(),
-        Divider(
+      Container(
+        width: screenW,
+        height: 20,
+        child: DecoratedBox(
+          decoration: BoxDecoration(color: mainColor,borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20) ,bottomRight:Radius.circular(20))),
+        ),
+      ),
+        Container(
+          padding: EdgeInsets.all(8),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              GestureDetector(
+                onTap: (){
+                  setState(() {
+                    _chosenValue="Math&Info";
+                  });
+                },
+                child: Column(
+                  children: [
+                    CircleAvatar(
+                      child: CircleAvatar(
+                        radius: 30,
+                        backgroundColor: mainColor,
+                        backgroundImage: AssetImage("images/mi.jpg"),
+                      ),
+                      backgroundColor: mainColor,
+                      radius:  _chosenValue=="Math&Info" ? 33:30,
+                    ),
+                    SizedBox(height: 5,),
+                    Text("MI",style: TextStyle(fontSize: 15),),
+                  ],
+                ),
+              ),
+              GestureDetector(
+                onTap: (){
+                  setState(() {
+                    _chosenValue="ST";
+                  });
+                },
+                child: Column(
+                  children: [
+                    CircleAvatar(
+                      child: CircleAvatar(
+                        radius: 30,
+                        backgroundColor: mainColor,
+                        backgroundImage: AssetImage("images/st.jpg"),
+                      ),
+                      radius:  _chosenValue=="ST" ? 33:30,
+                      backgroundColor: mainColor,
+                    ),
+                    SizedBox(height: 5,),
+                    Text("ST",style: TextStyle(fontSize: 15),),
+                  ],
+                ),
+              ),
+              GestureDetector(
+                onTap: (){
+                  setState(() {
+                    _chosenValue="Biologie";
+                  });
+
+                },
+                child: Column(
+                  children: [
+                    CircleAvatar(
+                      child: CircleAvatar(
+                        radius: 30,
+                        backgroundColor: mainColor,
+                        backgroundImage: AssetImage("images/bio.jpg"),
+                      ),
+                      radius:  _chosenValue=="Biologie" ? 33:30,
+                      backgroundColor: mainColor,
+                    ),
+                    SizedBox(height: 5,),
+                    Text("BIO",style: TextStyle(fontSize: 15),),
+                  ],
+                ),
+              ),
+              GestureDetector(
+                onTap: (){
+                  setState(() {
+                    _chosenValue="SM";
+                  });
+                },
+                child: Column(
+                  children: [
+                    CircleAvatar(
+                      child: CircleAvatar(
+                        radius: 30,
+                        backgroundColor: mainColor,
+                        backgroundImage: AssetImage("images/sm.jpg"),
+                      ),
+                      radius: _chosenValue=="SM" ? 33:30,
+                      backgroundColor: mainColor,
+                    ),
+                    SizedBox(height: 5,),
+                    Text("SM",style: TextStyle(fontSize: 15),),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+        //DropDownMenu(),
+        /*Divider(
           height: 50,
           thickness: 10,
-        ),
-        SpecificScolarityPage(
-            value: _chosenValue, screenH: screenH, screenW: screenW)
+        ),*/
+      SizedBox(height: 0,),
+        Container(
+          padding: EdgeInsets.all(0),
+          child: SpecificScolarityPage(
+              value: _chosenValue, screenH: screenH, screenW: screenW),
+        )
       ]);
   }
 }

@@ -7,7 +7,6 @@ class NewsEntity {
   final String description;
    int likes;
   final DateTime lastModification;
-   bool isClicked=false;
   NewsEntity(
       {required this.coverImage,
       required this.lastModification,
@@ -15,6 +14,5 @@ class NewsEntity {
       required this.title,
       required this.description,
       required this.likes,
-        required this.isClicked
       });
 }

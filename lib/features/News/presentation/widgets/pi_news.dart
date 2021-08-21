@@ -36,6 +36,7 @@ class ClubNewsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
           child: ListView.builder(
+              shrinkWrap: true,
               itemCount: entries.length,
               itemBuilder: (BuildContext context, int index) {
                 return Center(

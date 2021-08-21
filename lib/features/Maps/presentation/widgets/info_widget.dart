@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_initiative_club_app/features/Maps/domain/entities/maps_data.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:project_initiative_club_app/ressources/globals.dart';
 
 class InfoWidget extends StatelessWidget {
   final MapsDataEntity entity;
@@ -10,30 +11,63 @@ class InfoWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("test"),
+        elevation: 0,
+        backgroundColor: mainColor,
       ),
-      body: Column(
-        children: [
-          CarouselSlider(
-            items: entity.images
-                .map((e) => Container(
-                        child: Container(
-                      margin: EdgeInsets.all(5.0),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                        child: Image.asset(e, fit: BoxFit.cover, width: 1000.0),
-                      ),
-                    )))
-                .toList(),
-            options: CarouselOptions(
-              autoPlay: true,
-              aspectRatio: 2.0,
-              enlargeCenterPage: true,
+      body: Container(
+        color: mainColor,
+        child: Column(
+          children: [
+            Text(entity.title,style: TextStyle(fontSize: 20,color: Colors.white,fontFamily: 'Roboto Slab'),),
+            SizedBox(height: 5,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 3,
+                  width: 40,
+                  decoration: BoxDecoration(
+                    color: Colors.white
+                  ),
+                ),
+              ],
             ),
-          ),
-          Text(entity.title),
-          Text(entity.description)
-        ],
+            SizedBox(height: 20,),
+            CarouselSlider(
+              items: entity.images
+                  .map((e) => Container(
+                          child: Container(
+                        margin: EdgeInsets.all(5.0),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                          child: Image.asset(e, fit: BoxFit.cover, width: 1000.0),
+                        ),
+                      )))
+                  .toList(),
+              options: CarouselOptions(
+                autoPlay: true,
+                aspectRatio: 2.0,
+                enlargeCenterPage: true,
+              ),
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height*0.565,
+              margin: EdgeInsets.only(right: 20,left: 20,top: 20),
+              padding: EdgeInsets.only(right: 20,left: 20),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+                color: Colors.white
+              ),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Text(entity.description,style: TextStyle(fontFamily: 'Roboto Slab',height: 2),textAlign: TextAlign.center,)
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

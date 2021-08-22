@@ -22,45 +22,50 @@ class _NewsPageState extends State<NewsPage> {
   @override
   Widget build(BuildContext context) {
     double screenW = MediaQuery.of(context).size.width;
-    return  Column(
-        children: [
-          Container(
-            width: screenW,
-            height: 40,
-            child: DecoratedBox(
-              decoration: BoxDecoration(color: mainColor,borderRadius: BorderRadius.only(bottomLeft: Radius.circular(15) ,bottomRight:Radius.circular(15))),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  _container(0, "PI News"),
-                  _container(1, "Usthb News"),
-                ],
-              ),
-            ),
-          ),
-          Container(
-            height: MediaQuery.of(context).size.height*0.76,
-            child: Stack(
+    return Column(
+      children: [
+        Container(
+          width: screenW,
+          height: 40,
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+                color: mainColor,
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(15),
+                    bottomRight: Radius.circular(15))),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                _widget(),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: FloatingActionButton(child: Icon(Icons.add),backgroundColor: mainColor,onPressed: (){
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (BuildContext context) => AddNewsPage()));
-                    }),
-                  ),
-                )
+                _container(0, "PI News"),
+                _container(1, "Usthb News"),
               ],
             ),
           ),
-
-
-        ],
-      );
+        ),
+        Container(
+          height: MediaQuery.of(context).size.height * 0.76,
+          child: Stack(
+            children: [
+              _widget(),
+              Align(
+                alignment: Alignment.bottomRight,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: FloatingActionButton(
+                      child: Icon(Icons.add),
+                      backgroundColor: mainColor,
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (BuildContext context) => AddNewsPage()));
+                      }),
+                ),
+              )
+            ],
+          ),
+        ),
+      ],
+    );
   }
 
   void onClickeBtn(int index) {
@@ -73,7 +78,7 @@ class _NewsPageState extends State<NewsPage> {
   Widget _widget() {
     if (clickedBtns[0]) {
       return PiNews();
-    } else{
+    } else {
       return UsthbNews();
     }
   }
@@ -89,16 +94,14 @@ class _NewsPageState extends State<NewsPage> {
             onPressed: () {
               onClickeBtn(index);
             },
-            child: Text(text, style: TextStyle(color: Colors.white,fontSize: 16 )),
+            child:
+                Text(text, style: TextStyle(color: Colors.white, fontSize: 16)),
           ),
           decoration: BoxDecoration(
             border: Border(
                 bottom: clickedBtns[index]
                     ? BorderSide(color: Colors.white, width: 1)
-                    : BorderSide(width: 0, color: mainColor)
-
-            ),
-
+                    : BorderSide(width: 0, color: mainColor)),
           )),
     );
   }

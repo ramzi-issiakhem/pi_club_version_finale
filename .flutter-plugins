@@ -1,0 +1,21 @@
+# This is a generated file; do not edit or check into version control.
+cloud_firestore=F:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\cloud_firestore-2.5.0\\
+cloud_firestore_web=F:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\cloud_firestore_web-2.4.0\\
+firebase_core=F:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_core-1.5.0\\
+firebase_core_web=F:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_core_web-1.1.0\\
+firebase_storage=F:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_storage-10.0.2\\
+firebase_storage_web=F:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_storage_web-3.0.1\\
+flutter_plugin_android_lifecycle=F:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\flutter_plugin_android_lifecycle-2.0.2\\
+google_maps_flutter=F:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\google_maps_flutter-2.0.6\\
+image_picker=F:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\image_picker-0.8.3+2\\
+image_picker_for_web=F:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\image_picker_for_web-2.1.2\\
+path_provider=F:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider-2.0.2\\
+path_provider_linux=F:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_linux-2.0.2\\
+path_provider_macos=F:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_macos-2.0.2\\
+path_provider_windows=F:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_windows-2.0.3\\
+shared_preferences=F:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\shared_preferences-2.0.6\\
+shared_preferences_linux=F:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\shared_preferences_linux-2.0.2\\
+shared_preferences_macos=F:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\shared_preferences_macos-2.0.2\\
+shared_preferences_web=F:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\shared_preferences_web-2.0.1\\
+shared_preferences_windows=F:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\shared_preferences_windows-2.0.2\\
+sqflite=F:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\sqflite-2.0.0+3\\

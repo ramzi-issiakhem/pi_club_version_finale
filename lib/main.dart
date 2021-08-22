@@ -7,12 +7,10 @@ import 'package:project_initiative_club_app/ressources/globals.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/foundation.dart';
 import 'injections.dart' as serviceLocator;
-import 'package:flutter/material.dart';
 import 'package:project_initiative_club_app/features/About%20Us/presentation/pages/about_us_page_1.dart';
 import 'package:project_initiative_club_app/features/Maps/presentation/pages/page_maps.dart';
 import 'package:project_initiative_club_app/features/News/presentation/pages/news_page.dart';
 import 'package:project_initiative_club_app/features/Scolarity/presentation/pages/scolarity_page.dart';
-import 'package:project_initiative_club_app/main_class.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -50,24 +48,30 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   bool error = false;
   bool initialized = false;
-  int currentab=0;
-  Widget currentscreen=ScolarityPage();
- final PageStorageBucket bucket = PageStorageBucket();
-  String text="News";
-  String gettext(){
-    switch(currentab){
-      case 0: return"News";
-      break;
-      case 1: return"Scolarité";
+  int currentab = 0;
+  Widget currentscreen = ScolarityPage();
+  final PageStorageBucket bucket = PageStorageBucket();
+  String text = "News";
+  String gettext() {
+    switch (currentab) {
+      case 0:
+        return "News";
         break;
-      case 2: return"Map";
+      case 1:
+        return "Scolarité";
         break;
-      case 3: return"Contact";
+      case 2:
+        return "Map";
         break;
-      default: return "";
+      case 3:
+        return "Contact";
+        break;
+      default:
+        return "";
     }
   }
-  List<Widget> screens=[
+
+  List<Widget> screens = [
     NewsPage(),
     ScolarityPage(),
     MapsPage(),
@@ -84,15 +88,23 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(gettext(),style: TextStyle(fontSize: 35),textAlign: TextAlign.center,),
+            Text(
+              gettext(),
+              style: TextStyle(fontSize: 35),
+              textAlign: TextAlign.center,
+            ),
           ],
         ),
       ),
       body: PageStorage(bucket: bucket, child: screens[currentab]),
       floatingActionButton: FloatingActionButton(
         backgroundColor: mainColor,
-        child: Container(decoration: BoxDecoration(image: DecorationImage(image: AssetImage("images/logowhite.png"))),),
-        onPressed: (){
+        child: Container(
+          decoration: BoxDecoration(
+              image:
+                  DecorationImage(image: AssetImage("images/logowhite.png"))),
+        ),
+        onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(
               builder: (BuildContext context) => AboutUsPageSecondary()));
         },
@@ -105,87 +117,114 @@ class _MyHomePageState extends State<MyHomePage> {
           height: 60,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget> [
-              Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  MaterialButton(
-                      minWidth: 20,
-                      onPressed:(){
-                        setState(() {
-                          mainClass.rebuild("news");
-                          currentab=0;
-                        });
-                      } ,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.article,color: currentab==0 ? mainColor:Colors.grey,),
-                        Text("News",style: TextStyle(color:  currentab==0 ? mainColor:Colors.grey,),)
-
-                      ],
-                    ),
-                  ),
-                  MaterialButton(
-                    minWidth: 20,
-                    onPressed:(){
-                      setState(() {
-                        mainClass.rebuild("scolarity");
-                        currentab=1;
-                      });
-                    } ,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.school_outlined,color: currentab==1 ? mainColor:Colors.grey,),
-                        Text("Scolarité",style: TextStyle(color:  currentab==1 ? mainColor:Colors.grey,),)
-
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-             SizedBox(width: 10),
+            children: <Widget>[
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   MaterialButton(
                     minWidth: 20,
-                    onPressed:(){
+                    onPressed: () {
                       setState(() {
-                        mainClass.rebuild("map");
-                        currentab=2;
+                        mainClass.rebuild("news");
+                        currentab = 0;
                       });
-                    } ,
+                    },
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.map_outlined,color: currentab==2 ? mainColor:Colors.grey,),
-                        Text("maps",style: TextStyle(color:  currentab==2 ? mainColor:Colors.grey,),)
-
+                        Icon(
+                          Icons.article,
+                          color: currentab == 0 ? mainColor : Colors.grey,
+                        ),
+                        Text(
+                          "News",
+                          style: TextStyle(
+                            color: currentab == 0 ? mainColor : Colors.grey,
+                          ),
+                        )
                       ],
                     ),
                   ),
                   MaterialButton(
                     minWidth: 20,
-                    onPressed:(){
+                    onPressed: () {
                       setState(() {
-                        currentscreen=MapsPage();
-                        currentab=3;
+                        mainClass.rebuild("scolarity");
+                        currentab = 1;
                       });
-                    } ,
+                    },
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.contact_support_outlined,color: currentab==3 ? mainColor:Colors.grey,),
-                        Text("Contact",style: TextStyle(color:  currentab==3 ? mainColor:Colors.grey,),)
-
+                        Icon(
+                          Icons.school_outlined,
+                          color: currentab == 1 ? mainColor : Colors.grey,
+                        ),
+                        Text(
+                          "Scolarité",
+                          style: TextStyle(
+                            color: currentab == 1 ? mainColor : Colors.grey,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(width: 10),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  MaterialButton(
+                    minWidth: 20,
+                    onPressed: () {
+                      setState(() {
+                        mainClass.rebuild("map");
+                        currentab = 2;
+                      });
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.map_outlined,
+                          color: currentab == 2 ? mainColor : Colors.grey,
+                        ),
+                        Text(
+                          "maps",
+                          style: TextStyle(
+                            color: currentab == 2 ? mainColor : Colors.grey,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  MaterialButton(
+                    minWidth: 20,
+                    onPressed: () {
+                      setState(() {
+                        currentscreen = MapsPage();
+                        currentab = 3;
+                      });
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.contact_support_outlined,
+                          color: currentab == 3 ? mainColor : Colors.grey,
+                        ),
+                        Text(
+                          "Contact",
+                          style: TextStyle(
+                            color: currentab == 3 ? mainColor : Colors.grey,
+                          ),
+                        )
                       ],
                     ),
                   ),
                 ],
               )
-
             ],
           ),
         ),

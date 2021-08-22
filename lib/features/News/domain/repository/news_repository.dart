@@ -1,19 +1,17 @@
 import 'package:dartz/dartz.dart';
 import 'package:project_initiative_club_app/features/News/domain/entities/newsEntity.dart';
 import 'package:project_initiative_club_app/features/News/domain/usecases/add_news_usecase.dart';
+import 'package:project_initiative_club_app/features/News/domain/usecases/remove_news_usecase.dart';
 import 'package:project_initiative_club_app/ressources/errors/failures.dart';
 
 abstract class NewsRepository {
   /// Return Either the like for the news has been registered
   ///
   /// Return a [Failure] in case of any error .
-  Future<Either<Failure, bool>> addLike({required NewsEntity news});
+  Future<Either<Failure, bool>> manageLikes(
+      {required NewsEntity news, required int type, required bool isAnAdd});
 
-  /// Return Either the like for the news has been registered
-  ///
-  /// Return a [Failure] in case of any error .
-  ///
-  Future<Either<Failure, bool>> removeLike({required NewsEntity news});
+  Future<Either<Failure, bool>> isLiked({required NewsEntity news});
 
   /// Return A List of the USTHB News
   ///
@@ -29,4 +27,6 @@ abstract class NewsRepository {
   ///
   /// Return a [Failure] in case of any error .
   Future<Either<Failure, bool>> addNews(AddNewsParam param);
+
+  Future<Either<Failure, bool>> removeNews(RemoveNewsParam param);
 }

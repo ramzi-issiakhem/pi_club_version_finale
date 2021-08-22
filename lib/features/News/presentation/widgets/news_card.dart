@@ -8,7 +8,9 @@ import 'package:project_initiative_club_app/ressources/globals.dart';
 class NewsCard extends StatelessWidget {
   final NewsEntity news;
   final Color color;
-  const NewsCard({Key? key, required this.news, required this.color})
+  final int type;
+  const NewsCard(
+      {Key? key, required this.news, required this.color, required this.type})
       : super(key: key);
 
   @override
@@ -22,11 +24,13 @@ class NewsCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: ConstrainedBox(
-        constraints: BoxConstraints.tightFor(height: cardSizeH + cardSizeH * 0.7),
+        constraints:
+            BoxConstraints.tightFor(height: cardSizeH + cardSizeH * 0.7),
         child: InkWell(
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(
-                builder: (BuildContext context) => SpecificNewsPage(news: news)));
+                builder: (BuildContext context) =>
+                    SpecificNewsPage(news: news, type: type)));
           },
           child: Stack(
             clipBehavior: Clip.none,
@@ -43,7 +47,7 @@ class NewsCard extends StatelessWidget {
                   borderRadius: borderRadius,
                   child: CachedNetworkImage(
                       fit: BoxFit.cover,
-                      placeholder: (context, url) => SizedBox(width: 30,height: 30,child: Center(child: CircularProgressIndicator(color: mainColor,))),
+                      //placeholder: (context, url) => SizedBox(width: 30,height: 30,child: Center(child: CircularProgressIndicator(color: mainColor,))),
                       imageUrl: news.coverImage),
                 ),
               ),
@@ -67,7 +71,9 @@ class NewsCard extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             LikesAndModificationWidget(news),
-                            SizedBox(height: 15,),
+                            SizedBox(
+                              height: 15,
+                            ),
                             Text(
                               news.title,
                               textAlign: TextAlign.left,
@@ -80,8 +86,8 @@ class NewsCard extends StatelessWidget {
                             SizedBox(height: cardSizeH * 0.075),
                             Text(news.description,
                                 overflow: TextOverflow.fade,
-                                style:
-                                    TextStyle(color: Colors.white, fontSize: 12))
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 12))
                           ],
                         ),
                       ),

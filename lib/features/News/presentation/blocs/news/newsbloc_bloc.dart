@@ -5,8 +5,11 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:project_initiative_club_app/features/News/domain/entities/newsEntity.dart';
 import 'package:project_initiative_club_app/features/News/domain/usecases/add_news_usecase.dart';
+import 'package:project_initiative_club_app/features/News/domain/usecases/is_liked_usecase.dart';
+import 'package:project_initiative_club_app/features/News/domain/usecases/likes_usecase.dart';
 import 'package:project_initiative_club_app/features/News/domain/usecases/pi_news_usecase.dart'
     as Club;
+import 'package:project_initiative_club_app/features/News/domain/usecases/remove_news_usecase.dart';
 import 'package:project_initiative_club_app/features/News/domain/usecases/usthb_news_usecase.dart'
     as Usthb;
 
@@ -17,8 +20,14 @@ class NewsblocBloc extends Bloc<NewsblocEvent, NewsblocState> {
   final Club.PiNewsUseCase clubNewsUsecase;
   final Usthb.UsthbNewsCase usthbNewsUsecase;
   final AddNewsUseCase addNewsUseCase;
+  final LikesUseCase likesUseCase;
+  final IsLikedUseCase isLikedUseCase;
+  final RemoveNewsUseCase removeNewsUseCase;
   NewsblocBloc(
-      {required this.addNewsUseCase,
+      {required this.isLikedUseCase,
+      required this.removeNewsUseCase,
+      required this.likesUseCase,
+      required this.addNewsUseCase,
       required this.clubNewsUsecase,
       required this.usthbNewsUsecase})
       : super(EmptyUsthb());
@@ -45,6 +54,22 @@ class NewsblocBloc extends Bloc<NewsblocEvent, NewsblocState> {
       final failureOrBool = await addNewsUseCase.call(formEvent.param);
       yield failureOrBool.fold(
           (error) => Error(message: error.message), (state) => LoadedForm());
+    } else if (event is LikeClick) {
+      yield Loading();
+
+      final failureOrBool = await likesUseCase.call(event.param);
+      yield failureOrBool.fold(
+          (error) => Error(message: error.message), (state) => LoadedLike());
+    } else if (event is IsLiked) {
+      yield Loading();
+      final failureOrBool = await isLikedUseCase.call(event.news);
+      yield failureOrBool.fold((error) => Error(message: error.message),
+          (state) => LoadedIsLiked(isLiked: state));
+    } else if (event is RemoveNews) {
+      yield Loading();
+      final failureOrBool = await removeNewsUseCase.call(event.param);
+      yield failureOrBool.fold(
+          (error) => Error(message: error.message), (state) => LoadedRemove());
     }
   }
 }

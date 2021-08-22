@@ -41,22 +41,20 @@ class UsthbNewsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return
-        Expanded(
-          child: ListView.builder(
-            shrinkWrap: true,
-              itemCount: entries.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Center(
-                    child: NewsCard(
-                        color: Colors.blue.shade600, news: entries[index]));
-              }),
-        );
-        //FloatingActionButton(child: Icon(Icons.add),onPressed: (){
-         // Navigator.of(context).push(MaterialPageRoute(
-          //    builder: (BuildContext context) => AddNewsPage()));
-       // }),
-
-
+    return ListView.builder(
+        shrinkWrap: true,
+        itemCount: entries.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Center(
+              child: NewsCard(
+            color: Colors.blue.shade600,
+            news: entries[index],
+            type: 1,
+          ));
+        });
+    //FloatingActionButton(child: Icon(Icons.add),onPressed: (){
+    // Navigator.of(context).push(MaterialPageRoute(
+    //    builder: (BuildContext context) => AddNewsPage()));
+    // }),
   }
 }

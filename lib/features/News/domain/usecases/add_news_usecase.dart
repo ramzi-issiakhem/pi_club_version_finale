@@ -26,13 +26,13 @@ class AddNewsParam {
   final int likes;
   final DateTime lastModification;
   final int type;
-  AddNewsParam(
-      {required this.type,
-      required this.coverImage,
-      required this.lastModification,
-      required this.images,
-      required this.title,
-      required this.description,
-      required this.likes,
-      });
+  AddNewsParam({
+    required this.type,
+    required this.coverImage,
+    required this.lastModification,
+    required this.images,
+    required this.title,
+    required this.description,
+    required this.likes,
+  });
 }

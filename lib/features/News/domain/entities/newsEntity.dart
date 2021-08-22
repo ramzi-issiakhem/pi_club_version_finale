@@ -5,14 +5,16 @@ class NewsEntity {
   final List<String> images;
   final String title;
   final String description;
-   int likes;
+  int likes;
   final DateTime lastModification;
-  NewsEntity(
-      {required this.coverImage,
-      required this.lastModification,
-      required this.images,
-      required this.title,
-      required this.description,
-      required this.likes,
-      });
+  final String uid;
+  NewsEntity({
+    required this.uid,
+    required this.coverImage,
+    required this.lastModification,
+    required this.images,
+    required this.title,
+    required this.description,
+    required this.likes,
+  });
 }

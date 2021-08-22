@@ -116,7 +116,7 @@ class AboutUsPageSecondary extends StatelessWidget {
           'images/pi/image_2.png',
           'images/pi/image_2.png',
           'images/pi/image_2.png'
-        ], screenH, screenW)
+        ], screenH, screenW,false)
         /*imageWidget('images/pi/image_2.png', screenW),
         SizedBox(
           height: 5,

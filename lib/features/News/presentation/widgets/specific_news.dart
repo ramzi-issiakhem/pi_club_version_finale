@@ -82,7 +82,7 @@ class _SpecificNewsPageState extends State<SpecificNewsPage> {
 
     return ListView(children: [
       carouselWidget(<String>[widget.news.coverImage] + widget.news.images,
-          screenH, screenW),
+          screenH, screenW, true),
       Container(
         padding: EdgeInsets.only(left: 20, right: 10),
         height: MediaQuery.of(context).size.height * 0.53,

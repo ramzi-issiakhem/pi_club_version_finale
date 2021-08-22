@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project_initiative_club_app/features/About%20Us/presentation/widgets/carousel_widget.dart';
 import 'package:project_initiative_club_app/features/About%20Us/presentation/widgets/section_widget.dart';
 import 'package:project_initiative_club_app/ressources/globals.dart';
+
 // ignore: must_be_immutable
 class AboutUsPage extends StatelessWidget {
   AboutUsPage({Key? key}) : super(key: key);
@@ -19,14 +20,18 @@ class AboutUsPage extends StatelessWidget {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("about us ",style: TextStyle(fontSize: 35),textAlign: TextAlign.center,),
+            Text(
+              "about us ",
+              style: TextStyle(fontSize: 35),
+              textAlign: TextAlign.center,
+            ),
           ],
         ),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            carouselWidget(imagesPath, screenH, screenW),
+            carouselWidget(imagesPath, screenH, screenW, false),
             sectionWidget(
                 title: "Qui Sommes-Nous",
                 screenH: screenH,

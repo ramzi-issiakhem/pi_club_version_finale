@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class NewsEntity {
-  final String coverImage;
-  final List<String> images;
-  final String title;
-  final String description;
+  String coverImage;
+  List<String> images;
+  String title;
+  String description;
   int likes;
   final DateTime lastModification;
   final String uid;

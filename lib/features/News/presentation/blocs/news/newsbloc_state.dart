@@ -13,7 +13,10 @@ class EmptyClub extends NewsblocState {}
 
 class Loading extends NewsblocState {}
 
-class LoadedLike extends NewsblocState {}
+class LoadedLike extends NewsblocState {
+  final bool state;
+  LoadedLike({required this.state});
+}
 
 class LoadedClubNews extends NewsblocState {
   final List<NewsEntity> list;
@@ -38,3 +41,5 @@ class LoadedIsLiked extends NewsblocState {
 class LoadedRemove extends NewsblocState {}
 
 class LoadedForm extends NewsblocState {}
+
+class LoadedEditForm extends NewsblocState {}

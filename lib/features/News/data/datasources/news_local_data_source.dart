@@ -56,7 +56,7 @@ class NewsLocalDataSourceImpl implements NewsLocalDataSource {
     try {
       SharedPreferences sharedPreferences =
           await SharedPreferences.getInstance();
-      bool state = sharedPreferences.getBool('news' + news.uid) ?? false;
+      bool state = await sharedPreferences.getBool('news' + news.uid) ?? false;
       return state;
     } catch (e) {
       throw (ClientException(e.toString()));
@@ -68,7 +68,7 @@ class NewsLocalDataSourceImpl implements NewsLocalDataSource {
     try {
       SharedPreferences sharedPreferences =
           await SharedPreferences.getInstance();
-      sharedPreferences.setBool('news' + newsEntity.uid, isAnAdd);
+      await sharedPreferences.setBool('news' + newsEntity.uid, isAnAdd);
       return true;
     } catch (e) {
       throw (ClientException(e.toString()));

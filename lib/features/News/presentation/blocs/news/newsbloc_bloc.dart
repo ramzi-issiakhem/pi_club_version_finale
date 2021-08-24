@@ -5,6 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:project_initiative_club_app/features/News/domain/entities/newsEntity.dart';
 import 'package:project_initiative_club_app/features/News/domain/usecases/add_news_usecase.dart';
+import 'package:project_initiative_club_app/features/News/domain/usecases/edit_news_usecase.dart';
 import 'package:project_initiative_club_app/features/News/domain/usecases/is_liked_usecase.dart';
 import 'package:project_initiative_club_app/features/News/domain/usecases/likes_usecase.dart';
 import 'package:project_initiative_club_app/features/News/domain/usecases/pi_news_usecase.dart'
@@ -23,8 +24,10 @@ class NewsblocBloc extends Bloc<NewsblocEvent, NewsblocState> {
   final LikesUseCase likesUseCase;
   final IsLikedUseCase isLikedUseCase;
   final RemoveNewsUseCase removeNewsUseCase;
+  final EditNewsUseCase editNewsUseCase;
   NewsblocBloc(
-      {required this.isLikedUseCase,
+      {required this.editNewsUseCase,
+      required this.isLikedUseCase,
       required this.removeNewsUseCase,
       required this.likesUseCase,
       required this.addNewsUseCase,
@@ -50,16 +53,16 @@ class NewsblocBloc extends Bloc<NewsblocEvent, NewsblocState> {
           (list) => LoadedUsthbNews(list: list));
     } else if (event is FormEvent) {
       yield Loading();
-      FormEvent formEvent = cast<FormEvent>(event);
-      final failureOrBool = await addNewsUseCase.call(formEvent.param);
+
+      final failureOrBool = await addNewsUseCase.call(event.param);
       yield failureOrBool.fold(
           (error) => Error(message: error.message), (state) => LoadedForm());
     } else if (event is LikeClick) {
       yield Loading();
 
-      final failureOrBool = await likesUseCase.call(event.param);
-      yield failureOrBool.fold(
-          (error) => Error(message: error.message), (state) => LoadedLike());
+      final failureOrInt = await likesUseCase.call(event.param);
+      yield failureOrInt.fold((error) => Error(message: error.message),
+          (state) => LoadedLike(state: state));
     } else if (event is IsLiked) {
       yield Loading();
       final failureOrBool = await isLikedUseCase.call(event.news);
@@ -70,6 +73,12 @@ class NewsblocBloc extends Bloc<NewsblocEvent, NewsblocState> {
       final failureOrBool = await removeNewsUseCase.call(event.param);
       yield failureOrBool.fold(
           (error) => Error(message: error.message), (state) => LoadedRemove());
+    } else if (event is EditForm) {
+      yield Loading();
+
+      final failureOrBool = await editNewsUseCase.call(event.params);
+      yield failureOrBool.fold((error) => Error(message: error.message),
+          (state) => LoadedEditForm());
     }
   }
 }

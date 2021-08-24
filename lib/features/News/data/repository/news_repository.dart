@@ -1,9 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:project_initiative_club_app/features/News/data/datasources/news_local_data_source.dart';
 import 'package:project_initiative_club_app/features/News/data/datasources/news_remote_data_source.dart';
+import 'package:project_initiative_club_app/features/News/data/model/news_model.dart';
 import 'package:project_initiative_club_app/features/News/domain/entities/newsEntity.dart';
 import 'package:project_initiative_club_app/features/News/domain/repository/news_repository.dart';
 import 'package:project_initiative_club_app/features/News/domain/usecases/add_news_usecase.dart';
+import 'package:project_initiative_club_app/features/News/domain/usecases/edit_news_usecase.dart';
 import 'package:project_initiative_club_app/features/News/domain/usecases/remove_news_usecase.dart';
 import 'package:project_initiative_club_app/ressources/errors/exceptions.dart';
 import 'package:project_initiative_club_app/ressources/errors/failures.dart';
@@ -15,17 +17,24 @@ class NewsRepositoryImpl implements NewsRepository {
 
   NewsRepositoryImpl(
       {required this.remoteDataSource, required this.localDataSource});
-
+  // TODO Remove picture from storage
   @override
   Future<Either<Failure, bool>> manageLikes(
       {required NewsEntity news,
       required int type,
       required bool isAnAdd}) async {
     try {
-      bool state = await remoteDataSource.manageLikes(news, type, isAnAdd);
-      localDataSource.like(isAnAdd, news);
+      bool isLiked = await localDataSource.isLiked(news: news);
 
-      return Right(state);
+      if (isLiked && !isAnAdd) {
+        bool state = await remoteDataSource.manageLikes(news, type, isAnAdd);
+        await localDataSource.like(isAnAdd, news);
+      } else if (isAnAdd && !isLiked) {
+        bool state = await remoteDataSource.manageLikes(news, type, isAnAdd);
+        await localDataSource.like(isAnAdd, news);
+      }
+
+      return Right(true);
     } on ServerException catch (e) {
       return Left(ServerFailure(message: e.message));
     }
@@ -82,6 +91,16 @@ class NewsRepositoryImpl implements NewsRepository {
     String uid = news.uid;
     try {
       bool state = await remoteDataSource.removeNews(type, uid);
+      return Right(state);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(message: e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, bool>> updateNews(EditNewsParam params) async {
+    try {
+      bool state = await remoteDataSource.updateNews(params);
       return Right(state);
     } on ServerException catch (e) {
       return Left(ServerFailure(message: e.message));

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:project_initiative_club_app/features/News/domain/entities/newsEntity.dart';
 import 'package:project_initiative_club_app/features/News/domain/usecases/add_news_usecase.dart';
+import 'package:project_initiative_club_app/features/News/domain/usecases/edit_news_usecase.dart';
 
 class NewsModel extends NewsEntity {
   final String coverImage;
@@ -33,7 +34,7 @@ class NewsModel extends NewsEntity {
     DateTime dateTime = t.toDate();
     List<String> list = [];
 
-    list = []; //data["images"] == null ? [] : data['images'];
+    list = data['images'] != null ? List.from(data['images']) : [];
     return NewsModel(
       uid: id,
       coverImage: data["coverImage"],
@@ -46,12 +47,13 @@ class NewsModel extends NewsEntity {
   }
 
   factory NewsModel.fromParams(AddNewsParam param, String coverImagePath,
-      List<String> images, String id) {
+      List<String> imagesPath, String id) {
+    print("PATH " + imagesPath.toString());
     return NewsModel(
       uid: id,
       coverImage: coverImagePath,
       lastModification: param.lastModification,
-      images: images,
+      images: List.from(imagesPath),
       title: param.title,
       description: param.description,
       likes: param.likes,
@@ -66,7 +68,7 @@ class NewsModel extends NewsEntity {
       'likes': likes,
       'description': description,
       'lastModification': lastModification,
-      'images': List<String>.of(images),
+      'images': FieldValue.arrayUnion(images),
     };
   }
 }

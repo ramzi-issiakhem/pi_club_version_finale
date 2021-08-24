@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:project_initiative_club_app/features/News/domain/entities/newsEntity.dart';
 import 'package:project_initiative_club_app/features/News/domain/usecases/add_news_usecase.dart';
+import 'package:project_initiative_club_app/features/News/domain/usecases/edit_news_usecase.dart';
 import 'package:project_initiative_club_app/features/News/domain/usecases/remove_news_usecase.dart';
 import 'package:project_initiative_club_app/ressources/errors/failures.dart';
 
@@ -29,4 +30,6 @@ abstract class NewsRepository {
   Future<Either<Failure, bool>> addNews(AddNewsParam param);
 
   Future<Either<Failure, bool>> removeNews(RemoveNewsParam param);
+
+  Future<Either<Failure, bool>> updateNews(EditNewsParam newsParam);
 }

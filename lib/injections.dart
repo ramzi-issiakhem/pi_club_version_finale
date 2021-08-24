@@ -13,6 +13,7 @@ import 'package:project_initiative_club_app/features/News/data/datasources/news_
 import 'package:project_initiative_club_app/features/News/data/repository/news_repository.dart';
 import 'package:project_initiative_club_app/features/News/domain/repository/news_repository.dart';
 import 'package:project_initiative_club_app/features/News/domain/usecases/add_news_usecase.dart';
+import 'package:project_initiative_club_app/features/News/domain/usecases/edit_news_usecase.dart';
 import 'package:project_initiative_club_app/features/News/domain/usecases/is_liked_usecase.dart';
 import 'package:project_initiative_club_app/features/News/domain/usecases/likes_usecase.dart';
 import 'package:project_initiative_club_app/features/News/domain/usecases/pi_news_usecase.dart';
@@ -31,6 +32,7 @@ Future<void> init() async {
 
   sl.registerFactory(() => NewsblocBloc(
       likesUseCase: sl(),
+      editNewsUseCase: sl(),
       removeNewsUseCase: sl(),
       isLikedUseCase: sl(),
       clubNewsUsecase: sl(),
@@ -48,6 +50,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => PiNewsUseCase(newsRepository: sl()));
   sl.registerLazySingleton(() => UsthbNewsCase(newsRepository: sl()));
   sl.registerLazySingleton(() => LikesUseCase(newsRepository: sl()));
+  sl.registerLazySingleton(() => EditNewsUseCase(newsRepository: sl()));
   sl.registerLazySingleton(() => RemoveNewsUseCase(newsRepository: sl()));
   //* Repository
   sl.registerLazySingleton<MapsRepository>(

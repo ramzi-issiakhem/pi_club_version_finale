@@ -30,3 +30,9 @@ class RemoveNews extends NewsblocEvent {
   final RemoveNewsParam param;
   RemoveNews({required this.param});
 }
+
+class EditForm extends NewsblocEvent {
+  final EditNewsParam params;
+
+  EditForm({required this.params});
+}

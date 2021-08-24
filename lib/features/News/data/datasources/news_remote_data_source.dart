@@ -8,6 +8,7 @@ import 'package:path/path.dart';
 import 'package:project_initiative_club_app/features/News/data/model/news_model.dart';
 import 'package:project_initiative_club_app/features/News/domain/entities/newsEntity.dart';
 import 'package:project_initiative_club_app/features/News/domain/usecases/add_news_usecase.dart';
+import 'package:project_initiative_club_app/features/News/domain/usecases/edit_news_usecase.dart';
 import 'package:project_initiative_club_app/ressources/errors/exceptions.dart';
 import 'package:uuid/uuid.dart';
 
@@ -21,6 +22,8 @@ abstract class NewsRemoteDataSource {
   Future<bool> addNews(AddNewsParam param);
 
   Future<bool> removeNews(int type, String uid);
+
+  Future<bool> updateNews(EditNewsParam params);
 }
 
 class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
@@ -36,11 +39,15 @@ class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
       String coverImagePath = await uploadFile(param.coverImage, param.type,
           basename(param.coverImage.path), param.title);
 
-      for (var i = 0; i < param.images.length; i++) {
-        String path = await uploadFile(param.coverImage, param.type,
-            basename(param.coverImage.path), param.title);
-        imagesPath.add(path);
-      }
+      param.images.forEach((element) async {
+        if (element != null) {
+          String path = await uploadFile(
+              element, param.type, basename(element.path), param.title);
+
+          imagesPath.add(path);
+        }
+      });
+
       String id = Uuid().v4();
       NewsModel newsEnity =
           NewsModel.fromParams(param, coverImagePath, imagesPath, id);
@@ -55,10 +62,52 @@ class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
           break;
       }
 
-      CollectionReference news =
-          FirebaseFirestore.instance.collection(collection);
+      CollectionReference news = firestore.collection(collection);
 
       await news.doc(id).set((newsEnity.toJson()));
+      return true;
+    } catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
+
+  Future<bool> updateNews(EditNewsParam params) async {
+    List<String> imagesPath = [];
+    try {
+      String coverImagePath = await uploadFile(params.coverImage, params.type,
+          basename(params.coverImage.path), params.title);
+
+      params.images.forEach((element) async {
+        String path = await uploadFile(
+            element, params.type, basename(element.path), params.title);
+
+        imagesPath.add(path);
+      });
+
+      String collection;
+      switch (params.type) {
+        case 0:
+          collection = "pi_news";
+          break;
+        default:
+          collection = "usthb_news";
+          break;
+      }
+
+      NewsModel news = NewsModel(
+        lastModification: DateTime.now(),
+        uid: params.uid,
+        images: imagesPath,
+        coverImage: coverImagePath,
+        description: params.description,
+        title: params.title,
+        likes: params.likes,
+      );
+
+      await firestore
+          .collection(collection)
+          .doc(params.uid)
+          .update(news.toJson());
       return true;
     } catch (e) {
       throw ServerException(e.toString());
@@ -77,17 +126,20 @@ class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
           collection = "usthb_news";
           break;
       }
+      int number = 0;
 
       if (isAnAdd) {
-        await firestore.collection(collection).doc(news.uid).update(
-            {'lastModification': DateTime.now(), 'likes': news.likes + 1});
-        
-      } else {
-        
+        number = news.likes + 1;
         await firestore
             .collection(collection)
             .doc(news.uid)
-            .update({'lastModification': DateTime.now(), 'likes': news.likes > 0 ? news.likes -1 : 0});
+            .update({'lastModification': DateTime.now(), 'likes': number});
+      } else {
+        number = news.likes > 0 ? news.likes - 1 : 0;
+        await firestore
+            .collection(collection)
+            .doc(news.uid)
+            .update({'lastModification': DateTime.now(), 'likes': number});
       }
       return true;
     } catch (e) {

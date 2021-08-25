@@ -20,6 +20,7 @@ class EditNewsUseCase implements UseCase<bool, EditNewsParam> {
 }
 
 class EditNewsParam {
+  final int ancientType;
   final String title;
   final String description;
   final String uid;
@@ -30,6 +31,7 @@ class EditNewsParam {
   EditNewsParam(
       {required this.type,
       required this.title,
+      required this.ancientType,
       required this.uid,
       required this.likes,
       required this.description,

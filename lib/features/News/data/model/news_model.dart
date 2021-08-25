@@ -61,6 +61,8 @@ class NewsModel extends NewsEntity {
   }
 
   Map<String, dynamic> toJson() {
+    List<String> imagesArray = List.from(images);
+    
     return {
       'id': uid,
       'coverImage': coverImage,
@@ -68,7 +70,7 @@ class NewsModel extends NewsEntity {
       'likes': likes,
       'description': description,
       'lastModification': lastModification,
-      'images': FieldValue.arrayUnion(images),
+      'images': imagesArray,
     };
   }
 }

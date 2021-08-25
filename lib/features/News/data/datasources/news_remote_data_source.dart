@@ -21,7 +21,7 @@ abstract class NewsRemoteDataSource {
 
   Future<bool> addNews(AddNewsParam param);
 
-  Future<bool> removeNews(int type, String uid);
+  Future<bool> removeNews(NewsEntity news, int type);
 
   Future<bool> updateNews(EditNewsParam params);
 }
@@ -39,14 +39,20 @@ class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
       String coverImagePath = await uploadFile(param.coverImage, param.type,
           basename(param.coverImage.path), param.title);
 
-      param.images.forEach((element) async {
-        if (element != null) {
+      for (int i = 0; i < param.images.length; i++) {
+        File file = param.images[i];
+        if (file.path != "null") {
           String path = await uploadFile(
-              element, param.type, basename(element.path), param.title);
-
+              file, param.type, basename(file.path), param.title);
+          print('chemin ' + path);
           imagesPath.add(path);
         }
+      }
+      param.images.forEach((element) async {
+        if (element.path != "null") {}
       });
+
+      print("arry1:" + imagesPath.toString());
 
       String id = Uuid().v4();
       NewsModel newsEnity =
@@ -76,12 +82,15 @@ class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
     try {
       String coverImagePath = await uploadFile(params.coverImage, params.type,
           basename(params.coverImage.path), params.title);
+      print("PARAMS" + params.images.toString());
 
       params.images.forEach((element) async {
-        String path = await uploadFile(
-            element, params.type, basename(element.path), params.title);
+        if (element.path != "null") {
+          String path = await uploadFile(
+              element, params.type, basename(element.path), params.title);
 
-        imagesPath.add(path);
+          imagesPath.add(path);
+        }
       });
 
       String collection;
@@ -104,10 +113,25 @@ class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
         likes: params.likes,
       );
 
-      await firestore
-          .collection(collection)
-          .doc(params.uid)
-          .update(news.toJson());
+      if (params.type == params.ancientType) {
+        await firestore
+            .collection(collection)
+            .doc(params.uid)
+            .update(news.toJson());
+      } else {
+        String temp = "";
+        if (collection == "pi_news") {
+          temp = 'usthb_news';
+        } else {
+          temp = "pi_news";
+        }
+        await firestore.collection(temp).doc(params.uid).delete();
+        await firestore
+            .collection(collection)
+            .doc(params.uid)
+            .set(news.toJson());
+      }
+
       return true;
     } catch (e) {
       throw ServerException(e.toString());
@@ -198,25 +222,32 @@ class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
   Future<String> uploadFile(
       File file, int type, String fileName, String title) async {
     String typeString = "";
+
     if (type == 0) {
       typeString = "pi";
     } else if (type == 1) {
       typeString = "club";
     }
-    String name =
-        title + '_' + DateTime.now().millisecondsSinceEpoch.toString();
+    DateTime time = DateTime.now();
+    String name = title +
+        '-' +
+        time.year.toString() +
+        "-" +
+        time.month.toString() +
+        "-" +
+        time.day.toString();
     String fullPath = 'uploads/news/$typeString/images/$name/$fileName';
 
     try {
       TaskSnapshot task = await storage.ref().child(fullPath).putFile(file);
-      return task.ref.getDownloadURL();
+      return await task.ref.getDownloadURL();
     } on FirebaseException catch (e) {
       return e.toString();
     }
   }
 
   @override
-  Future<bool> removeNews(int type, String uid) async {
+  Future<bool> removeNews(NewsEntity news, int type) async {
     String collection = "";
     switch (type) {
       case 0:
@@ -228,12 +259,16 @@ class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
     }
 
     try {
+      storage.refFromURL(news.coverImage).delete();
+      for (int i = 0; i < news.images.length; i++) {
+        storage.refFromURL(news.images[i]).delete();
+      }
       await firestore
           .collection(collection)
-          .doc(uid)
+          .doc(news.uid)
           .update({"lastModification": DateTime.now()});
 
-      await firestore.collection(collection).doc(uid).delete();
+      await firestore.collection(collection).doc(news.uid).delete();
       return true;
     } catch (e) {
       throw ServerException(e.toString());

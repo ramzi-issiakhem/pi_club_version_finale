@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,6 +38,7 @@ class EditPage extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class EditPageWidget extends StatefulWidget {
   int type;
   final NewsEntity news;
@@ -54,21 +54,18 @@ class _EditPageWidgetState extends State<EditPageWidget> {
   File imageone = File("null");
   File imagetwo = File("null");
   File imagethree = File("null");
+
   String valueDropDown = "club";
+  bool isDone = false;
   @override
-  void initState() async {
+  void initState() {
     if (widget.type == 0) {
       valueDropDown = "club";
     } else {
       valueDropDown = "usthb";
     }
+    _getImage();
 
-    setState(() async {
-      coverImage = await _getFileFromUrl(widget.news.coverImage, 'cover');
-      imageone = await _getFileFromUrl(widget.news.coverImage, 'cover');
-      imagetwo = await _getFileFromUrl(widget.news.coverImage, 'cover');
-      imagethree = await _getFileFromUrl(widget.news.coverImage, 'cover');
-    });
     super.initState();
   }
 
@@ -85,336 +82,356 @@ class _EditPageWidgetState extends State<EditPageWidget> {
 
   final _formKey = GlobalKey<FormState>();
   int type = 0;
-  TextEditingController titleController = TextEditingController();
+  String title = "";
 
-  TextEditingController descriptionController = TextEditingController();
+  String description = "";
   int ind = 0;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: mainColor,
-        title: Row(
-          children: [
-            Text(
-              "Edit news",
-              style: TextStyle(fontSize: 30),
-              textAlign: TextAlign.center,
-            ),
-          ],
+    if (isDone) {
+      return Scaffold(
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: mainColor,
+          title: Row(
+            children: [
+              Text(
+                "Edit news",
+                style: TextStyle(fontSize: 30),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
         ),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              height: MediaQuery.of(context).size.height * 0.90,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    vertical: 12.0, horizontal: 10.0),
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          _getCoverImageFromGallery();
-                        },
-                        child: Container(
-                          height: 200,
-                          width: double.infinity,
-                          padding: EdgeInsets.only(right: 10),
-                          foregroundDecoration: BoxDecoration(),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border(
-                              top: BorderSide(width: 2, color: mainColor),
-                              left: BorderSide(width: 2, color: mainColor),
-                              right: BorderSide(width: 2, color: mainColor),
-                              bottom: BorderSide(width: 2, color: mainColor),
-                            ),
-                          ),
-                          child: coverImage.path == "null"
-                              ? Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.image,
-                                        size: 40, color: mainColor),
-                                    Text("Cover image"),
-                                  ],
-                                )
-                              : Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(left: 8.0),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(20),
-                                      child: FittedBox(
-                                          fit: BoxFit.fill,
-                                          child: Image.file(coverImage)),
-                                    ),
-                                  ),
-                                ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      SizedBox(
-                        height: 110,
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Container(
-                                width: MediaQuery.of(context).size.width * 0.3,
-                                child: ClipRRect(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(5.0)),
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      _getImageOneFromGallery();
-                                    },
-                                    child: Container(
-                                      foregroundDecoration: BoxDecoration(),
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(20),
-                                        border: Border(
-                                          top: BorderSide(
-                                              width: 2, color: mainColor),
-                                          left: BorderSide(
-                                              width: 2, color: mainColor),
-                                          right: BorderSide(
-                                              width: 2, color: mainColor),
-                                          bottom: BorderSide(
-                                              width: 2, color: mainColor),
-                                        ),
-                                      ),
-                                      child: imageone.path == "null"
-                                          ? Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Icon(Icons.image,
-                                                    size: 40, color: mainColor),
-                                                Text("Cover image"),
-                                              ],
-                                            )
-                                          : Expanded(
-                                              child: Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 8.0),
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(20),
-                                                  child: FittedBox(
-                                                      fit: BoxFit.fill,
-                                                      child:
-                                                          Image.file(imageone)),
-                                                ),
-                                              ),
-                                            ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                width: MediaQuery.of(context).size.width * 0.3,
-                                child: ClipRRect(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(5.0)),
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      _getImageTwoFromGallery();
-                                    },
-                                    child: Container(
-                                      foregroundDecoration: BoxDecoration(),
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(20),
-                                        border: Border(
-                                          top: BorderSide(
-                                              width: 2, color: mainColor),
-                                          left: BorderSide(
-                                              width: 2, color: mainColor),
-                                          right: BorderSide(
-                                              width: 2, color: mainColor),
-                                          bottom: BorderSide(
-                                              width: 2, color: mainColor),
-                                        ),
-                                      ),
-                                      child: imagetwo.path == "null"
-                                          ? Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Icon(Icons.image,
-                                                    size: 40, color: mainColor),
-                                                Text("Cover image"),
-                                              ],
-                                            )
-                                          : Expanded(
-                                              child: Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 8.0),
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(20),
-                                                  child: FittedBox(
-                                                      fit: BoxFit.fill,
-                                                      child:
-                                                          Image.file(imagetwo)),
-                                                ),
-                                              ),
-                                            ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                width: MediaQuery.of(context).size.width * 0.3,
-                                child: ClipRRect(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(5.0)),
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      _getImageThreeFromGallery();
-                                    },
-                                    child: Container(
-                                      foregroundDecoration: BoxDecoration(),
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(20),
-                                        border: Border(
-                                          top: BorderSide(
-                                              width: 2, color: mainColor),
-                                          left: BorderSide(
-                                              width: 2, color: mainColor),
-                                          right: BorderSide(
-                                              width: 2, color: mainColor),
-                                          bottom: BorderSide(
-                                              width: 2, color: mainColor),
-                                        ),
-                                      ),
-                                      child: imagethree.path == "null"
-                                          ? Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Icon(Icons.image,
-                                                    size: 40, color: mainColor),
-                                                Text("Cover image"),
-                                              ],
-                                            )
-                                          : Expanded(
-                                              child: Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 8.0),
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(20),
-                                                  child: FittedBox(
-                                                      fit: BoxFit.fill,
-                                                      child: Image.file(
-                                                          imagethree)),
-                                                ),
-                                              ),
-                                            ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ]),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      SelectFormField(
-                        type: SelectFormFieldType.dropdown, // or can be dialog
-                        initialValue: valueDropDown,
-                        icon: Icon(Icons.new_releases_sharp),
-                        labelText: 'Type de News',
-                        items: entries,
-                        onChanged: (val) {
-                          setState(() {
-                            if (val == "club") {
-                              widget.type = 0;
-                            } else if (val == "usthb") {
-                              widget.type = 1;
-                            }
-                          });
-                        },
-                      ),
-                      TextFormField(
-                        initialValue: widget.news.title,
-                        controller: titleController,
-                        decoration: InputDecoration(
-                            icon: Icon(Icons.title), labelText: "Titre"),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return "Veuillez écrire une donnée valide";
-                          }
-                          return null;
-                        },
-                      ),
-                      TextFormField(
-                        initialValue: widget.news.description,
-                        controller: descriptionController,
-                        decoration: InputDecoration(
-                            icon: Icon(Icons.description_outlined),
-                            labelText: "Description"),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return "Veuillez écrire une donnée valide";
-                          }
-                          return null;
-                        },
-                      ),
-                      Container(),
-                      Align(
-                        alignment: Alignment.bottomRight,
-                        child: FloatingActionButton(
-                          backgroundColor: mainColor,
-                          onPressed: () {
-                            // Validate returns true if the form is valid, or false otherwise.
-
-                            if (_formKey.currentState!.validate()) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                    duration: Duration(seconds: 2),
-                                    content: Text('Editing News ...')),
-                              );
-
-                              BlocProvider.of<NewsblocBloc>(context).add(
-                                  EditForm(
-                                      params: EditNewsParam(
-                                          uid: widget.news.uid,
-                                          likes: widget.news.likes,
-                                          title: titleController.text,
-                                          description:
-                                              descriptionController.text,
-                                          coverImage: coverImage,
-                                          images: [
-                                            imageone,
-                                            imagetwo,
-                                            imagethree
-                                          ],
-                                          type: widget.type)));
-                            }
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                height: MediaQuery.of(context).size.height * 0.90,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 12.0, horizontal: 10.0),
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            _getCoverImageFromGallery();
                           },
-                          child: const Icon(Icons.send),
+                          child: Container(
+                            height: 200,
+                            width: double.infinity,
+                            padding: EdgeInsets.only(right: 10),
+                            foregroundDecoration: BoxDecoration(),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border(
+                                top: BorderSide(width: 2, color: mainColor),
+                                left: BorderSide(width: 2, color: mainColor),
+                                right: BorderSide(width: 2, color: mainColor),
+                                bottom: BorderSide(width: 2, color: mainColor),
+                              ),
+                            ),
+                            child: coverImage.path == "null"
+                                ? Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(Icons.image,
+                                          size: 40, color: mainColor),
+                                      Text("Cover image"),
+                                    ],
+                                  )
+                                : Expanded(
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 8.0),
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(20),
+                                        child: FittedBox(
+                                            fit: BoxFit.fill,
+                                            child: Image.file(coverImage)),
+                                      ),
+                                    ),
+                                  ),
+                          ),
                         ),
-                      ),
-                    ],
+                        SizedBox(
+                          height: 5,
+                        ),
+                        SizedBox(
+                          height: 110,
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.3,
+                                  child: ClipRRect(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5.0)),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        _getImageOneFromGallery();
+                                      },
+                                      child: Container(
+                                        foregroundDecoration: BoxDecoration(),
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          border: Border(
+                                            top: BorderSide(
+                                                width: 2, color: mainColor),
+                                            left: BorderSide(
+                                                width: 2, color: mainColor),
+                                            right: BorderSide(
+                                                width: 2, color: mainColor),
+                                            bottom: BorderSide(
+                                                width: 2, color: mainColor),
+                                          ),
+                                        ),
+                                        child: imageone.path == "null"
+                                            ? Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Icon(Icons.image,
+                                                      size: 40,
+                                                      color: mainColor),
+                                                  Text("Cover image"),
+                                                ],
+                                              )
+                                            : Expanded(
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 8.0),
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20),
+                                                    child: FittedBox(
+                                                        fit: BoxFit.fill,
+                                                        child: Image.file(
+                                                            imageone)),
+                                                  ),
+                                                ),
+                                              ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.3,
+                                  child: ClipRRect(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5.0)),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        _getImageTwoFromGallery();
+                                      },
+                                      child: Container(
+                                        foregroundDecoration: BoxDecoration(),
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          border: Border(
+                                            top: BorderSide(
+                                                width: 2, color: mainColor),
+                                            left: BorderSide(
+                                                width: 2, color: mainColor),
+                                            right: BorderSide(
+                                                width: 2, color: mainColor),
+                                            bottom: BorderSide(
+                                                width: 2, color: mainColor),
+                                          ),
+                                        ),
+                                        child: imagetwo.path == "null"
+                                            ? Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Icon(Icons.image,
+                                                      size: 40,
+                                                      color: mainColor),
+                                                  Text("Cover image"),
+                                                ],
+                                              )
+                                            : Expanded(
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 8.0),
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20),
+                                                    child: FittedBox(
+                                                        fit: BoxFit.fill,
+                                                        child: Image.file(
+                                                            imagetwo)),
+                                                  ),
+                                                ),
+                                              ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.3,
+                                  child: ClipRRect(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5.0)),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        _getImageThreeFromGallery();
+                                      },
+                                      child: Container(
+                                        foregroundDecoration: BoxDecoration(),
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          border: Border(
+                                            top: BorderSide(
+                                                width: 2, color: mainColor),
+                                            left: BorderSide(
+                                                width: 2, color: mainColor),
+                                            right: BorderSide(
+                                                width: 2, color: mainColor),
+                                            bottom: BorderSide(
+                                                width: 2, color: mainColor),
+                                          ),
+                                        ),
+                                        child: imagethree.path == "null"
+                                            ? Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Icon(Icons.image,
+                                                      size: 40,
+                                                      color: mainColor),
+                                                  Text("Cover image"),
+                                                ],
+                                              )
+                                            : Expanded(
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 8.0),
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20),
+                                                    child: FittedBox(
+                                                        fit: BoxFit.fill,
+                                                        child: Image.file(
+                                                            imagethree)),
+                                                  ),
+                                                ),
+                                              ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ]),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        SelectFormField(
+                          type:
+                              SelectFormFieldType.dropdown, // or can be dialog
+                          initialValue: valueDropDown,
+                          icon: Icon(Icons.new_releases_sharp),
+                          labelText: 'Type de News',
+                          items: entries,
+                          onChanged: (val) {
+                            setState(() {
+                              if (val == "club") {
+                                type = 0;
+                              } else if (val == "usthb") {
+                                type = 1;
+                              }
+                            });
+                          },
+                        ),
+                        TextFormField(
+                          initialValue: widget.news.title,
+                          decoration: InputDecoration(
+                              icon: Icon(Icons.title), labelText: "Titre"),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return "Veuillez écrire une donnée valide";
+                            }
+                            title = value;
+                            return null;
+                          },
+                        ),
+                        TextFormField(
+                          initialValue: widget.news.description,
+                          decoration: InputDecoration(
+                              icon: Icon(Icons.description_outlined),
+                              labelText: "Description"),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return "Veuillez écrire une donnée valide";
+                            }
+                            description = value;
+                            return null;
+                          },
+                        ),
+                        Container(),
+                        Align(
+                          alignment: Alignment.bottomRight,
+                          child: FloatingActionButton(
+                            backgroundColor: mainColor,
+                            onPressed: () {
+                              // Validate returns true if the form is valid, or false otherwise.
+
+                              if (_formKey.currentState!.validate()) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      duration: Duration(seconds: 2),
+                                      content: Text('Editing News ...')),
+                                );
+
+                                BlocProvider.of<NewsblocBloc>(context).add(
+                                    EditForm(
+                                        params: EditNewsParam(
+                                            ancientType: widget.type,
+                                            uid: widget.news.uid,
+                                            likes: widget.news.likes,
+                                            title: title,
+                                            description: description,
+                                            coverImage: coverImage,
+                                            images: [
+                                              imageone,
+                                              imagetwo,
+                                              imagethree
+                                            ],
+                                            type: type)));
+                              }
+                            },
+                            child: const Icon(Icons.send),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    } else {
+      return LoadingWidget();
+    }
   }
 
   _getCoverImageFromGallery() async {
@@ -482,5 +499,25 @@ class _EditPageWidgetState extends State<EditPageWidget> {
     File file = new File('$dir/$filename');
     await file.writeAsBytes(bytes);
     return file;
+  }
+
+  Future<bool> _getImage() async {
+    coverImage = await _getFileFromUrl(
+        widget.news.coverImage, 'cover' + widget.news.uid + widget.news.title);
+    if (widget.news.images.length > 0) {
+      imageone = await _getFileFromUrl(widget.news.images[0],
+          'image 1' + widget.news.uid + widget.news.title);
+    } else if (widget.news.images.length > 1) {
+      imagetwo = await _getFileFromUrl(widget.news.images[1],
+          'image 2' + widget.news.uid + widget.news.title);
+    } else if (widget.news.images.length > 2) {
+      imagethree = await _getFileFromUrl(widget.news.images[2],
+          'image 3' + widget.news.uid + widget.news.title);
+    }
+
+    setState(() {
+      isDone = true;
+    });
+    return true;
   }
 }

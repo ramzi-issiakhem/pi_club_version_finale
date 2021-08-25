@@ -88,9 +88,8 @@ class NewsRepositoryImpl implements NewsRepository {
 
     NewsEntity news = param.newsEntity;
 
-    String uid = news.uid;
     try {
-      bool state = await remoteDataSource.removeNews(type, uid);
+      bool state = await remoteDataSource.removeNews(news, type);
       return Right(state);
     } on ServerException catch (e) {
       return Left(ServerFailure(message: e.message));

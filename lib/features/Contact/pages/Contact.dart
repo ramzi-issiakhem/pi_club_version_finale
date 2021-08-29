@@ -1,3 +1,5 @@
+//import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:project_initiative_club_app/ressources/globals.dart';
 
@@ -7,20 +9,69 @@ class Contact_page extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: 20,
-              child: DecoratedBox(
-              decoration: BoxDecoration(color: mainColor,borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20) ,bottomRight:Radius.circular(20))),
-              ),
-
-            ),
+            SizedBox(height: 100,),
           Container(
+            width: 350,
+            height: 500,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("images/social.png"),
+              ),
+            ),
+          ),
+        /*  Container(
               child: Column(
                 children: [
-
+                  SizedBox(height: 30,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                          width: 50,
+                          height: 50,
+                          child: Image.asset("images/face.png")),
+                    ],
+                  ),
+                  SizedBox(height: 30,),
+                  Text("project initiative club",style: TextStyle(color: mainColor,fontSize: 20,fontFamily: 'Roboto Slab'),),
+                  SizedBox(height: 30,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                          width: 50,
+                          height: 50,
+                          child: Image.asset("images/insta.png")),
+                    ],
+                  ),
+                  SizedBox(height: 30,),
+                  Text("project.initiative.club",style: TextStyle(color: mainColor,fontSize: 20,fontFamily: 'Roboto Slab'),),
+                  SizedBox(height: 30,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                          width: 50,
+                          height: 50,
+                          child: Image.asset("images/link.png")),
+                    ],
+                  ),
+                  SizedBox(height: 30,),
+                  Text("project initiative club",style: TextStyle(color: mainColor,fontSize: 20,fontFamily: 'Roboto Slab'),),
+                  SizedBox(height: 30,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                          width: 50,
+                          height: 50,
+                          child: Image.asset("images/mail.png")),
+                    ],
+                  ),
+                  SizedBox(height: 30,),
+                  Text("projectinitiative@gmail.com",style: TextStyle(color: mainColor,fontSize: 20,fontFamily: 'Roboto Slab'),),
                 ],
-              )),
+              )),*/
         ],
     ),
     );

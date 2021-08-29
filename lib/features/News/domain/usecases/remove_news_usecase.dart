@@ -6,13 +6,13 @@ import 'package:project_initiative_club_app/ressources/usecases/usecase.dart';
 
 enum NewsTypes { club, usthb }
 
-class RemoveNewsUseCase implements UseCase<bool, RemoveNewsParam> {
+class RemoveNewsUseCase implements UseCase<int, RemoveNewsParam> {
   final NewsRepository newsRepository;
 
   RemoveNewsUseCase({required this.newsRepository});
 
   @override
-  Future<Either<Failure, bool>> call(RemoveNewsParam newsParam) async {
+  Future<Either<Failure, int>> call(RemoveNewsParam newsParam) async {
     return await newsRepository.removeNews(newsParam);
   }
 }

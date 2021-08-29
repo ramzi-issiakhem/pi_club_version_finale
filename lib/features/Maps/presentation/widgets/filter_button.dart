@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
@@ -15,14 +17,14 @@ class FilterButtonWidget extends StatefulWidget {
 
 class _FilterButtonWidgetState extends State<FilterButtonWidget>
     with SingleTickerProviderStateMixin {
-  late Animation _animRotation;
+  //late Animation _animRotation;
   bool isFav = false;
-  late AnimationController _animController;
+  //late AnimationController _animController;
   @override
   void initState() {
     super.initState();
 
-    _animController =
+    /*_animController =
         AnimationController(duration: Duration(milliseconds: 200), vsync: this);
 
     _animRotation =
@@ -38,7 +40,7 @@ class _FilterButtonWidgetState extends State<FilterButtonWidget>
           isFav = false;
         });
       }
-    });
+    });*/
   }
 
   @override
@@ -49,7 +51,54 @@ class _FilterButtonWidgetState extends State<FilterButtonWidget>
     double radius = 10;
     double paddingChildren = caseWidth * 0.06;
 
-    return AnimatedBuilder(
+    return ListView.builder(
+        padding: EdgeInsets.only(left: paddingChildren, right: paddingChildren),
+        itemCount: statesFilters.length,
+        itemBuilder: (BuildContext context, int index) {
+          return RaisedButton(
+            onPressed: () {
+              setState(() {
+                statesFilters[index] = !statesFilters[index];
+              });
+              this.widget.filterFunction(index);
+            },
+            child: DecoratedBox(
+              decoration: BoxDecoration(color: mainColor),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  statesFilters[index]
+                      ? Icon(
+                          Icons.visibility,
+                          color: Colors.white,
+                        )
+                      : Icon(
+                          Icons.visibility_off,
+                          color: Colors.white,
+                        ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    mapFilter[index]!,
+                    style: TextStyle(color: Colors.white),
+                  )
+                ],
+              ),
+            ),
+          );
+        });
+  }
+}
+
+
+
+
+
+
+
+
+/*AnimatedBuilder(
         animation: _animController,
         builder: (BuildContext context, _) {
           return Column(children: [
@@ -119,6 +168,4 @@ class _FilterButtonWidgetState extends State<FilterButtonWidget>
               ),
             ),
           ]);
-        });
-  }
-}
+        });*/

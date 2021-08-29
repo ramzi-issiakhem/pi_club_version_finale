@@ -62,7 +62,7 @@ class NewsModel extends NewsEntity {
 
   Map<String, dynamic> toJson() {
     List<String> imagesArray = List.from(images);
-    
+    print("arrayimagesjson" + imagesArray.toString());
     return {
       'id': uid,
       'coverImage': coverImage,

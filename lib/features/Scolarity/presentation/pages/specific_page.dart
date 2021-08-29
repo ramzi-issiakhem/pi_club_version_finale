@@ -23,7 +23,7 @@ Widget SpecificScolarityPage(
   return Container(
     height: screenH*0.65,
     decoration: BoxDecoration(
-        color: mainColor.withOpacity(1),
+        color: Colors.white,
         borderRadius: BorderRadius.only(topRight: Radius.circular(20),topLeft: Radius.circular(20))
     ),
     padding: EdgeInsets.only(right: 10,left: 10),
@@ -31,7 +31,205 @@ Widget SpecificScolarityPage(
       child: Column(
         children: [
           SizedBox(height: 10,),
-          Row(
+          if (value=="Math&Info") Column(
+            children: [
+              Container(
+                height: 200,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("images/quoimi.png"),
+                  ),
+                ),
+              ),
+              Container(
+                width: 320,
+                height: 250,
+               decoration: BoxDecoration(
+                 image: DecorationImage(
+                   image: AssetImage("images/prog.png"),
+                 ),
+               ),
+                ),
+              Container(
+                width: 350,
+                height: 900,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("images/module.png"),
+                  ),
+                ),
+              ),
+              Container(
+                width: 300,
+                height: 700,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("images/spec.png"),
+                  ),
+                ),
+              ),
+              Container(
+                width: 350,
+                height: 200,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("images/laptop.png"),
+                  ),
+                ),
+              ),
+            ],
+          ) else Container(),
+          if (value=="Biologie") Column(
+            children:[
+              Container(
+                width: 350,
+                height: 300,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("images/bio.png"),
+                  ),
+                ),
+              ),
+              Container(
+                width: 350,
+                height: 300,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("images/biot.png"),
+                  ),
+                ),
+              ),
+              Container(
+                width: 350,
+                height: 700,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("images/biomod.png"),
+                  ),
+                ),
+              ),
+              Container(
+                width: 350,
+                height: 900,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("images/biospec.png"),
+                  ),
+                ),
+              ),
+              Container(
+                width: 350,
+                height: 350,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("images/biofin.png"),
+                  ),
+                ),
+              ),
+            ],
+          ) else Container(),
+          if (value=="SM") Column(
+            children: [
+              Container(
+                width: 350,
+                height: 300,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("images/smdeb.png"),
+                  ),
+                ),
+              ),
+              Container(
+                width: 350,
+                height: 300,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("images/smt.png"),
+                  ),
+                ),
+              ),
+              Container(
+                width: 350,
+                height: 700,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("images/smmod.png"),
+                  ),
+                ),
+              ),
+              Container(
+                width: 350,
+                height: 500,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("images/smspec.png"),
+                  ),
+                ),
+              ),
+              Container(
+                width: 350,
+                height: 300,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("images/smfin.png"),
+                  ),
+                ),
+              ),
+            ],
+
+          ) else Container(),
+          if (value=="ST") Column(
+            children: [
+              Container(
+                width: 350,
+                height: 200,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("images/stdeb.png"),
+                  ),
+                ),
+              ),
+              Container(
+                width: 350,
+                height: 300,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("images/stt.png"),
+                  ),
+                ),
+              ),
+              Container(
+                width: 350,
+                height: 700,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("images/stmod.png"),
+                  ),
+                ),
+              ),
+              Container(
+                width: 400,
+                height: 1100,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("images/stspec.png"),
+                  ),
+                ),
+              ),
+              Container(
+                width: 350,
+                height: 400,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("images/stfin.png"),
+                  ),
+                ),
+              ),
+            ],
+
+
+          ) else Container(),
+         /* Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
@@ -216,7 +414,7 @@ Widget SpecificScolarityPage(
           value=="Biologie"?Text(listData[9],style: TextStyle(color: Colors.white,fontSize: 16,fontFamily: 'Roboto Slab')):Container(),
           SizedBox(
             height: 50,
-          ),
+          ),*/
               ],
       ),
     ),

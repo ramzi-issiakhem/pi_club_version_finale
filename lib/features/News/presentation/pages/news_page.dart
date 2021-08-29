@@ -7,29 +7,34 @@ import 'package:project_initiative_club_app/main.dart';
 import 'package:project_initiative_club_app/ressources/globals.dart';
 
 class NewsPage extends StatefulWidget {
-  NewsPage({Key? key}) : super(key: key) {
+  bool isPiNews = true;
+  NewsPage({Key? key, this.isPiNews = true}) : super(key: key) {
     currentTitle = "News Feed";
   }
 
   @override
-  _NewsPageState createState() => _NewsPageState();
+  _NewsPageState createState() => _NewsPageState(isPiNews);
 }
 
-List<bool> clickedBtns = [false, false];
-
 class _NewsPageState extends State<NewsPage> {
+  bool isPiNews = true;
+  _NewsPageState(this.isPiNews);
+
   double elevationValue = 5;
+
   @override
   Widget build(BuildContext context) {
     double screenW = MediaQuery.of(context).size.width;
     return Column(
       children: [
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.03,
+        ),
         Container(
           width: screenW,
-          height: 40,
+          height: 30,
           child: DecoratedBox(
             decoration: BoxDecoration(
-                color: mainColor,
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(15),
                     bottomRight: Radius.circular(15))),
@@ -37,8 +42,36 @@ class _NewsPageState extends State<NewsPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                _container(0, "PI News"),
-                _container(1, "Usthb News"),
+                Padding(
+                  padding: const EdgeInsets.all(0),
+                  child: GestureDetector(
+                    onTap: () {
+                      onClickedBtn(0);
+                    },
+                    child: Container(
+                      child: Text("PI News",
+                          style: TextStyle(
+                              color: isPiNews ? mainColor : Colors.grey,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold)),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(0),
+                  child: GestureDetector(
+                    onTap: () {
+                      onClickedBtn(1);
+                    },
+                    child: Container(
+                      child: Text("Usthb News",
+                          style: TextStyle(
+                              color: isPiNews ? Colors.grey : mainColor,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold)),
+                    ),
+                  ),
+                )
               ],
             ),
           ),
@@ -68,41 +101,21 @@ class _NewsPageState extends State<NewsPage> {
     );
   }
 
-  void onClickeBtn(int index) {
+  void onClickedBtn(int index) {
     setState(() {
-      clickedBtns = [false, false];
-      clickedBtns[index] = true;
+      if (index == 0) {
+        isPiNews = true;
+      } else {
+        isPiNews = false;
+      }
     });
   }
 
   Widget _widget() {
-    if (clickedBtns[0]) {
+    if (isPiNews) {
       return PiNews();
     } else {
       return UsthbNews();
     }
-  }
-
-  Widget _container(int index, String text) {
-    return Padding(
-      padding: const EdgeInsets.all(4.0),
-      child: Container(
-          child: TextButton(
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(mainColor),
-            ),
-            onPressed: () {
-              onClickeBtn(index);
-            },
-            child:
-                Text(text, style: TextStyle(color: Colors.white, fontSize: 16)),
-          ),
-          decoration: BoxDecoration(
-            border: Border(
-                bottom: clickedBtns[index]
-                    ? BorderSide(color: Colors.white, width: 1)
-                    : BorderSide(width: 0, color: mainColor)),
-          )),
-    );
   }
 }

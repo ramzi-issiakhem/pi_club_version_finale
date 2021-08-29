@@ -5,6 +5,7 @@ import 'package:project_initiative_club_app/features/News/presentation/blocs/new
 import 'package:project_initiative_club_app/features/News/presentation/pages/add_news_page.dart';
 import 'package:project_initiative_club_app/features/News/presentation/widgets/news_card.dart';
 import 'package:project_initiative_club_app/injections.dart';
+import 'package:project_initiative_club_app/ressources/globals.dart';
 import 'package:project_initiative_club_app/ressources/widgets/loading.dart';
 
 class UsthbNews extends StatelessWidget {
@@ -47,7 +48,7 @@ class UsthbNewsWidget extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           return Center(
               child: NewsCard(
-            color: Colors.blue.shade600,
+            color: mainColor,
             news: entries[index],
             type: 1,
           ));

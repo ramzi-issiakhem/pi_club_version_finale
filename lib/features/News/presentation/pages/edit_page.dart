@@ -9,6 +9,7 @@ import 'package:project_initiative_club_app/features/News/domain/entities/newsEn
 import 'package:project_initiative_club_app/features/News/domain/usecases/edit_news_usecase.dart';
 import 'package:project_initiative_club_app/features/News/presentation/blocs/news/newsbloc_bloc.dart';
 import 'package:project_initiative_club_app/injections.dart';
+import 'package:project_initiative_club_app/main.dart';
 import 'package:project_initiative_club_app/ressources/globals.dart';
 import 'package:project_initiative_club_app/ressources/widgets/error.dart';
 import 'package:project_initiative_club_app/ressources/widgets/loading.dart';
@@ -29,7 +30,10 @@ class EditPage extends StatelessWidget {
           if (state is Loading) {
             return LoadingWidget();
           } else if (state is LoadedEditForm) {
-            Navigator.of(context).pop();
+            Navigator.of(context).deactivate();
+            return state.newType == 0
+                ? HomePage(type: "pinews")
+                : HomePage(type: "usthbnews");
           } else if (state is Error) {
             return ErrorPage(message: state.message);
           }

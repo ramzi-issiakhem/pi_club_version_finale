@@ -11,6 +11,7 @@ import 'package:project_initiative_club_app/features/News/presentation/blocs/new
 import 'package:project_initiative_club_app/features/News/presentation/pages/edit_page.dart';
 import 'package:project_initiative_club_app/features/News/presentation/widgets/likes_title.dart';
 import 'package:project_initiative_club_app/injections.dart';
+import 'package:project_initiative_club_app/main.dart';
 import 'package:project_initiative_club_app/ressources/globals.dart';
 import 'package:project_initiative_club_app/ressources/widgets/error.dart';
 import 'package:project_initiative_club_app/ressources/widgets/loading.dart';
@@ -87,8 +88,9 @@ class _SpecificNewsPageState extends State<SpecificNewsPage> {
                           context,
                         );
                       } else if (state is LoadedRemove) {
-                        Navigator.pop(context);
-                        return Container();
+                        return Center(
+                          child: Text("Element supprimé"),
+                        );
                       }
 
                       return _body(

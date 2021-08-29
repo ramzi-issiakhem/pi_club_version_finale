@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:project_initiative_club_app/features/Scolarity/presentation/pages/specific_page.dart';
 import 'package:project_initiative_club_app/features/Scolarity/presentation/widgets/choice_widgets.dart';
@@ -71,13 +72,14 @@ class _ScolarityPageState extends State<ScolarityPage> {
     double screenH = MediaQuery.of(context).size.height;
 
     return  Column(children: [
-      Container(
+      /*Container(
         width: screenW,
         height: 20,
-        child: DecoratedBox(
+          child: DecoratedBox(
           decoration: BoxDecoration(color: mainColor,borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20) ,bottomRight:Radius.circular(20))),
         ),
-      ),
+      ),*/
+      SizedBox(height: MediaQuery.of(context).size.height*0.04,),
         Container(
           padding: EdgeInsets.all(8),
           child: Row(
@@ -181,6 +183,7 @@ class _ScolarityPageState extends State<ScolarityPage> {
           thickness: 10,
         ),*/
       SizedBox(height: 0,),
+
         Container(
           padding: EdgeInsets.all(0),
           child: SpecificScolarityPage(

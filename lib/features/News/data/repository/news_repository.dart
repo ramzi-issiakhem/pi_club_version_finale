@@ -63,10 +63,10 @@ class NewsRepositoryImpl implements NewsRepository {
   }
 
   @override
-  Future<Either<Failure, bool>> addNews(AddNewsParam param) async {
+  Future<Either<Failure, int>> addNews(AddNewsParam param) async {
     try {
       bool state = await remoteDataSource.addNews(param);
-      return Right(state);
+      return Right(param.type);
     } on ServerException catch (e) {
       return Left(ServerFailure(message: e.message));
     }
@@ -83,24 +83,24 @@ class NewsRepositoryImpl implements NewsRepository {
   }
 
   @override
-  Future<Either<Failure, bool>> removeNews(RemoveNewsParam param) async {
+  Future<Either<Failure, int>> removeNews(RemoveNewsParam param) async {
     int type = param.type;
 
     NewsEntity news = param.newsEntity;
 
     try {
       bool state = await remoteDataSource.removeNews(news, type);
-      return Right(state);
+      return Right(type);
     } on ServerException catch (e) {
       return Left(ServerFailure(message: e.message));
     }
   }
 
   @override
-  Future<Either<Failure, bool>> updateNews(EditNewsParam params) async {
+  Future<Either<Failure, int>> updateNews(EditNewsParam params) async {
     try {
-      bool state = await remoteDataSource.updateNews(params);
-      return Right(state);
+      await remoteDataSource.updateNews(params);
+      return Right(params.type);
     } on ServerException catch (e) {
       return Left(ServerFailure(message: e.message));
     }

@@ -8,13 +8,13 @@ import 'package:project_initiative_club_app/ressources/usecases/usecase.dart';
 
 enum NewsTypes { club, usthb }
 
-class EditNewsUseCase implements UseCase<bool, EditNewsParam> {
+class EditNewsUseCase implements UseCase<int, EditNewsParam> {
   final NewsRepository newsRepository;
 
   EditNewsUseCase({required this.newsRepository});
 
   @override
-  Future<Either<Failure, bool>> call(EditNewsParam newsParam) async {
+  Future<Either<Failure, int>> call(EditNewsParam newsParam) async {
     return await newsRepository.updateNews(newsParam);
   }
 }

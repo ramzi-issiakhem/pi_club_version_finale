@@ -11,12 +11,21 @@ import 'package:project_initiative_club_app/ressources/globals.dart';
 class MapsWidget extends StatefulWidget {
   List<int> currentFiltringCode;
   final Polyline polyline;
+  final bool fromHome;
   MapsWidget(
-      {Key? key, required this.polyline, required this.currentFiltringCode})
+      {Key? key,
+      this.fromHome = false,
+      required this.polyline,
+      required this.currentFiltringCode})
       : super(key: key);
 
   @override
-  _MapsWidgetState createState() => _MapsWidgetState();
+  _MapsWidgetState createState() {
+    this.fromHome
+        ? statesFilters = [false, false, false, false, false, false]
+        : null;
+    return _MapsWidgetState();
+  }
 }
 
 class _MapsWidgetState extends State<MapsWidget> {
@@ -24,6 +33,7 @@ class _MapsWidgetState extends State<MapsWidget> {
   late GoogleMapController _controller;
   int prevPage = 1;
   List<MapsDataEntity> currentFiltredList = [];
+
   CameraPosition _initialPosition =
       CameraPosition(zoom: 14.5, target: LatLng(36.7121668, 3.1802495));
   Map<MarkerId, Marker> markers = <MarkerId, Marker>{};
@@ -271,29 +281,45 @@ class _MapsWidgetState extends State<MapsWidget> {
 
       Positioned(
           top: 60,
-          child: FilterButtonWidget(
-            filterFunction: modifyFilter,
+          child: SizedBox(
+            width: screenW,
+            height: 300,
+            child: FilterButtonWidget(
+              filterFunction: modifyFilter,
+            ),
           )),
 
       //Boutton des itineéraires
       Positioned(
-        top: 20,
-        height: 30,
-        child: ElevatedButton(
+        bottom: 20,
+        right: 10,
+        height: 60,
+        child: FloatingActionButton(
           onPressed: () => showDialog<String>(
               context: context,
               builder: (falseContext) {
                 return StatefulBuilder(builder: (falseContext, setState) {
                   return AlertDialog(
-                    title: const Text('Choisissez votre itinéraire'),
+                    title: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Choisissez votre itinéraire',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                      ],
+                    ),
                     content: Column(
                       children: [
                         DropdownButton<String>(
                           value: departValue,
+                          isExpanded: true,
                           icon: const Icon(Icons.arrow_downward),
                           iconSize: 24,
                           elevation: 16,
-                          style: const TextStyle(color: Colors.deepPurple),
+                          style: const TextStyle(
+                            color: Colors.deepPurple,
+                          ),
                           underline: Container(
                             height: 2,
                             color: Colors.deepPurpleAccent,
@@ -313,6 +339,7 @@ class _MapsWidgetState extends State<MapsWidget> {
                         ),
                         DropdownButton<String>(
                           value: destinationValue,
+                          isExpanded: true,
                           icon: const Icon(Icons.arrow_downward),
                           iconSize: 24,
                           elevation: 16,
@@ -337,13 +364,17 @@ class _MapsWidgetState extends State<MapsWidget> {
                       ],
                     ),
                     actions: <Widget>[
-                      TextButton(
+                      RaisedButton(
                         onPressed: () {
                           Navigator.pop(context, "Cancel");
                         },
-                        child: const Text('Cancel'),
+                        color: mainColor,
+                        child: Icon(
+                          Icons.cancel_outlined,
+                          color: Colors.white,
+                        ),
                       ),
-                      TextButton(
+                      RaisedButton(
                         onPressed: () {
                           Navigator.pop(context, "Let's Go");
                           BlocProvider.of<MapsdataBloc>(context)
@@ -354,13 +385,18 @@ class _MapsWidgetState extends State<MapsWidget> {
                             ]
                           }));
                         },
-                        child: const Text("Let's Go"),
+                        color: mainColor,
+                        child: Icon(
+                          Icons.alt_route,
+                          color: Colors.white,
+                        ),
                       ),
                     ],
                   );
                 });
               }),
-          child: Text('Créer un itinéraire'),
+          child: Icon(Icons.alt_route),
+          backgroundColor: mainColor,
         ),
       )
     ]);

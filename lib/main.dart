@@ -23,6 +23,8 @@ void main() async {
 // TODO optimize the upload and the download
 // TODO optimize tracing database
 class HomePage extends StatelessWidget {
+  String type = "null";
+  HomePage({this.type = "null"});
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -33,25 +35,27 @@ class HomePage extends StatelessWidget {
         ),
         home: ChangeNotifierProvider(
           create: (_) => MainClass(),
-          child: MyHomePage(),
+          child: MyHomePage(type: this.type),
         ));
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key}) : super(key: key);
+  String type = "null";
+  MyHomePage({Key? key, this.type = "null"}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
+@override
 class _MyHomePageState extends State<MyHomePage> {
   bool error = false;
   bool initialized = false;
   int currentab = 0;
-  Widget currentscreen = ScolarityPage();
   final PageStorageBucket bucket = PageStorageBucket();
   String text = "News";
+
   String gettext() {
     switch (currentab) {
       case 0:
@@ -74,27 +78,64 @@ class _MyHomePageState extends State<MyHomePage> {
   List<Widget> screens = [
     NewsPage(),
     ScolarityPage(),
-    MapsPage(),
+    MapsPage(fromHome: true),
     Contact_page(),
   ];
+
   @override
   Widget build(BuildContext context) {
+    print("type2 " + widget.type);
+
+    currentab = mainClass.currentTab();
+
+    Widget returnedWidget = Container(
+      child: Text("center"),
+    );
+    if (widget.type == "usthbnews") {
+      returnedWidget = NewsPage(isPiNews: false);
+    } else if (widget.type == "pinews") {
+      returnedWidget = NewsPage(isPiNews: true);
+    } else if (currentab == 10) {
+      returnedWidget = NewsPage(
+        isPiNews: false,
+      );
+    } else if (currentab == 11) {
+      returnedWidget = NewsPage(
+        isPiNews: true,
+      );
+    } else {
+      returnedWidget = screens[currentab];
+    }
+    print("widget1 " + returnedWidget.toString());
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: mainColor,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              gettext(),
-              style: TextStyle(fontSize: 35),
-              textAlign: TextAlign.center,
-            ),
-          ],
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(currentab == 2 ? 50 : 40.0),
+        child: AppBar(
+          elevation: 0,
+          backgroundColor: currentab == 2 ? mainColor : Colors.white12,
+          title: Column(
+            children: [
+              SizedBox(
+                height: currentab == 2 ? 0 : 15,
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    gettext(),
+                    style: TextStyle(
+                        fontSize: 35,
+                        color: currentab == 2 ? Colors.white : mainColor),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
-      body: PageStorage(bucket: bucket, child: screens[currentab]),
+      body: PageStorage(bucket: bucket, child: returnedWidget),
       floatingActionButton: FloatingActionButton(
         backgroundColor: mainColor,
         child: Container(
@@ -124,7 +165,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () {
                       setState(() {
                         mainClass.rebuild("news");
-                        currentab = 0;
                       });
                     },
                     child: Column(
@@ -148,7 +188,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () {
                       setState(() {
                         mainClass.rebuild("scolarity");
-                        currentab = 1;
                       });
                     },
                     child: Column(
@@ -178,7 +217,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () {
                       setState(() {
                         mainClass.rebuild("map");
-                        currentab = 2;
                       });
                     },
                     child: Column(
@@ -201,8 +239,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     minWidth: 20,
                     onPressed: () {
                       setState(() {
-                        currentscreen = MapsPage();
-                        currentab = 3;
+                        mainClass.rebuild("contact");
                       });
                     },
                     child: Column(
@@ -230,23 +267,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
-
-
-// @override
-//Widget build(BuildContext context) {
-//  double screenW = MediaQuery.of(context).size.width;
- // double screenH = MediaQuery.of(context).size.height;
- // return Container(
-  //  child: Column(
-    //  children: [
-  //      MainMenu(
- //         screenH: screenH,
- //         screenW: screenW,
-  //      ),
-  //      BottomNavigationBar(items: )
-  //    ],
-  //  ),
- // );
-//}
-//}

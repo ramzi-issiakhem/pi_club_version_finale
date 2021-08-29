@@ -9,7 +9,8 @@ import 'package:project_initiative_club_app/ressources/widgets/error.dart';
 import 'package:project_initiative_club_app/ressources/widgets/loading.dart';
 
 class MapsPage extends StatelessWidget {
-  const MapsPage({Key? key}) : super(key: key);
+  final bool fromHome;
+  const MapsPage({Key? key, this.fromHome = false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,13 +29,16 @@ class MapsPage extends StatelessWidget {
               return LoadingWidget();
             } else if (state is MapsDataLoaded) {
               return MapsWidget(
+                fromHome: fromHome,
                 currentFiltringCode: currentFiltringCode,
                 polyline: polyline,
               );
             } else if (state is ItineraryLoaded) {
               polyline = state.routes;
               return MapsWidget(
-                  polyline: polyline, currentFiltringCode: currentFiltringCode);
+                  fromHome: false,
+                  polyline: polyline,
+                  currentFiltringCode: currentFiltringCode);
             } else if (state is Error) {
               return ErrorPage(message: state.message);
             }

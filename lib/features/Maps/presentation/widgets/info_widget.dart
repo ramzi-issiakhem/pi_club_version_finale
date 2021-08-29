@@ -12,13 +12,19 @@ class InfoWidget extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: mainColor,
+        backgroundColor: Colors.white,
       ),
       body: Container(
-        color: mainColor,
+        decoration: BoxDecoration(
+          color: Colors.white
+          /*image: DecorationImage(
+            image: AssetImage("images/back1.png"),
+            fit: BoxFit.fill,
+          ),*/
+        ),
         child: Column(
           children: [
-            Text(entity.title,style: TextStyle(fontSize: 20,color: Colors.white,fontFamily: 'Roboto Slab'),),
+            Text(entity.title,style: TextStyle(fontSize: 20,color: mainColor,fontFamily: 'Roboto Slab'),),
             SizedBox(height: 5,),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -27,7 +33,7 @@ class InfoWidget extends StatelessWidget {
                   height: 3,
                   width: 40,
                   decoration: BoxDecoration(
-                    color: Colors.white
+                    color: mainColor
                   ),
                 ),
               ],
@@ -40,7 +46,7 @@ class InfoWidget extends StatelessWidget {
                         margin: EdgeInsets.all(5.0),
                         child: ClipRRect(
                           borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                          child: Image.asset(e, fit: BoxFit.cover, width: 1000.0),
+                          child: Image.asset(e, fit: BoxFit.fill, width: 1000.0),
                         ),
                       )))
                   .toList(),
@@ -56,12 +62,12 @@ class InfoWidget extends StatelessWidget {
               padding: EdgeInsets.only(right: 20,left: 20),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
-                color: Colors.white
+                color: mainColor,
               ),
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    Text(entity.description,style: TextStyle(fontFamily: 'Roboto Slab',height: 2),textAlign: TextAlign.center,)
+                    Text(entity.description,style: TextStyle(fontFamily: 'Roboto Slab',height: 2,color: Colors.white),textAlign: TextAlign.center,)
                   ],
                 ),
               ),

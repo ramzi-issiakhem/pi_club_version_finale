@@ -27,9 +27,9 @@ abstract class NewsRepository {
   /// Return Either the news is added or not
   ///
   /// Return a [Failure] in case of any error .
-  Future<Either<Failure, bool>> addNews(AddNewsParam param);
+  Future<Either<Failure, int>> addNews(AddNewsParam param);
 
-  Future<Either<Failure, bool>> removeNews(RemoveNewsParam param);
+  Future<Either<Failure, int>> removeNews(RemoveNewsParam param);
 
-  Future<Either<Failure, bool>> updateNews(EditNewsParam newsParam);
+  Future<Either<Failure, int>> updateNews(EditNewsParam newsParam);
 }

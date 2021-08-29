@@ -82,16 +82,16 @@ class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
     try {
       String coverImagePath = await uploadFile(params.coverImage, params.type,
           basename(params.coverImage.path), params.title);
-      print("PARAMS" + params.images.toString());
 
-      params.images.forEach((element) async {
+      for (int i = 0; i < params.images.length; i++) {
+        File element = params.images[i];
         if (element.path != "null") {
           String path = await uploadFile(
               element, params.type, basename(element.path), params.title);
 
           imagesPath.add(path);
         }
-      });
+      }
 
       String collection;
       switch (params.type) {
@@ -102,7 +102,7 @@ class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
           collection = "usthb_news";
           break;
       }
-
+      print("arrayimages" + imagesPath.toString());
       NewsModel news = NewsModel(
         lastModification: DateTime.now(),
         uid: params.uid,

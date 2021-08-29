@@ -19,7 +19,9 @@ class AddNewsPage extends StatelessWidget {
           } else if (state is Loading) {
             return LoadingWidget();
           } else if (state is LoadedForm) {
-            mainClass.rebuild("news");
+            state.type == 0
+                ? mainClass.rebuild("pinews")
+                : mainClass.rebuild("usthbnews");
             return Container();
           } else if (state is Error) {
             return Center(

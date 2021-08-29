@@ -55,8 +55,8 @@ class NewsblocBloc extends Bloc<NewsblocEvent, NewsblocState> {
       yield Loading();
 
       final failureOrBool = await addNewsUseCase.call(event.param);
-      yield failureOrBool.fold(
-          (error) => Error(message: error.message), (state) => LoadedForm());
+      yield failureOrBool.fold((error) => Error(message: error.message),
+          (state) => LoadedForm(type: state));
     } else if (event is LikeClick) {
       yield Loading();
 
@@ -71,14 +71,14 @@ class NewsblocBloc extends Bloc<NewsblocEvent, NewsblocState> {
     } else if (event is RemoveNews) {
       yield Loading();
       final failureOrBool = await removeNewsUseCase.call(event.param);
-      yield failureOrBool.fold(
-          (error) => Error(message: error.message), (state) => LoadedRemove());
+      yield failureOrBool.fold((error) => Error(message: error.message),
+          (state) => LoadedRemove(type: state));
     } else if (event is EditForm) {
       yield Loading();
 
       final failureOrBool = await editNewsUseCase.call(event.params);
       yield failureOrBool.fold((error) => Error(message: error.message),
-          (state) => LoadedEditForm());
+          (state) => LoadedEditForm(newType: state));
     }
   }
 }

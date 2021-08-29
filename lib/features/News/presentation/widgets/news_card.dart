@@ -18,14 +18,14 @@ class NewsCard extends StatelessWidget {
     double sizeH = MediaQuery.of(context).size.height;
     double sizeW = MediaQuery.of(context).size.width;
     double cardSizeH = sizeW * 0.55;
-    double cardSizeW = sizeW * 0.9;
-    BorderRadius borderRadius = BorderRadius.all(Radius.circular(20));
+    double cardSizeW = sizeW * 1;
+    BorderRadius borderRadius = BorderRadius.all(Radius.circular(0));
 
     return Padding(
-      padding: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.only(top: 20),
       child: ConstrainedBox(
         constraints:
-            BoxConstraints.tightFor(height: cardSizeH + cardSizeH * 0.7),
+            BoxConstraints.tightFor(height: cardSizeH + cardSizeH * 0.8),
         child: InkWell(
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(
@@ -36,7 +36,7 @@ class NewsCard extends StatelessWidget {
             clipBehavior: Clip.none,
             children: <Widget>[
               Container(
-                height: cardSizeH,
+                height: cardSizeH * 1.35,
                 width: cardSizeW,
                 decoration: BoxDecoration(
                     border: Border.all(
@@ -52,18 +52,18 @@ class NewsCard extends StatelessWidget {
                 ),
               ),
               Positioned(
-                  top: cardSizeH * 0.9,
+                  top: cardSizeH * 1.35,
                   left: 0,
                   child: ClipRRect(
                     borderRadius: borderRadius,
                     child: ConstrainedBox(
                       constraints: BoxConstraints.tightFor(
-                          width: cardSizeW, height: cardSizeH * 0.9),
+                          width: cardSizeW, height: cardSizeH * 0.5),
                       child: Container(
                         padding: EdgeInsets.symmetric(
                             horizontal: cardSizeW * 0.09,
                             vertical: cardSizeH * 0.1),
-                        color: Color(0xffEB5B25),
+                        color: mainColor,
                         width: cardSizeW,
                         height: cardSizeH * 0.7,
                         child: Column(
@@ -72,16 +72,7 @@ class NewsCard extends StatelessWidget {
                           children: [
                             LikesAndModificationWidget(news),
                             SizedBox(
-                              height: 15,
-                            ),
-                            Text(
-                              news.title,
-                              textAlign: TextAlign.left,
-                              overflow: TextOverflow.fade,
-                              style: TextStyle(
-                                  decoration: TextDecoration.none,
-                                  color: Colors.white,
-                                  fontSize: 18),
+                              height: 1,
                             ),
                             SizedBox(height: cardSizeH * 0.075),
                             Text(news.description,

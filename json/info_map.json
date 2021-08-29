@@ -1,23 +1,272 @@
 {
     "infos": [
-    {
+        
+            {
+                "title": "bureau 12",
+                "type": 3,
+                "description": "pour excitation de tout type de certification ",
+                "position": [36.71390105372027, 3.177222240249534],
+                "images": ["images/map/rectorat/rectorat1.png","images/map/rectorat/rectorat2.png","images/map/rectorat/rectorat3.jpg"]
+            },
+            {
+                "title": "nouveau bloc salle tp",
+                "type": 2,
+                "description": "",
+                "position": [36.70975457073739, 3.1820380891447053],
+                "images": ["images/map/rectorat/rectorat1.png","images/map/rectorat/rectorat2.png","images/map/rectorat/rectorat3.jpg"]
+            },
+            {
+                "title": "kiosk zizou",
+                "type": 0,
+                "description": "",
+                "position": [36.712747565792924, 3.1777285080413686],
+                "images": ["images/map/rectorat/rectorat1.png","images/map/rectorat/rectorat2.png","images/map/rectorat/rectorat3.jpg"]
+            },
+            {
+                "title": "entrée gare",
+                "type": 1,
+                "description": "",
+                "position": [36.70952520086548, 3.1849681552603895],
+                "images": ["images/map/rectorat/rectorat1.png","images/map/rectorat/rectorat2.png","images/map/rectorat/rectorat3.jpg"]
+            },
+            {
+                "title": "la poste",
+                "type": 3,
+                "description": "",
+                "position": [36.71138729392307, 3.17682466619979],
+                "images": ["images/map/rectorat/rectorat1.png","images/map/rectorat/rectorat2.png","images/map/rectorat/rectorat3.jpg"]
+            },
+            {
+                "title": "maison de la science",
+                "type": 4,
+                "description": "",
+                "position": [36.713749151891406, 3.176159042432271],
+                "images": ["images/map/rectorat/rectorat1.png","images/map/rectorat/rectorat2.png","images/map/rectorat/rectorat3.jpg"]
+            },
+            {
+                "title": "project initiative",
+                "type": 5,
+                "description": "",
+                "position": [36.71364498254254, 3.1760200034974257],
+                "images": ["images/map/rectorat/rectorat1.png","images/map/rectorat/rectorat2.png","images/map/rectorat/rectorat3.jpg"]
+            },
+            {
+                "title": "Espace internet",
+                "type": 4,
+                "description": "un Cyber espace qui compte plus de 500 ordinateurs reliés au haut débits.",
+                "position": [36.71538439335886, 3.18619446051876],
+                "images": ["images/map/rectorat/rectorat1.png","images/map/rectorat/rectorat2.png","images/map/rectorat/rectorat3.jpg"]
+            },
+            {
+                "title": "salle de conférence",
+                "type": 4,
+                "description": "",
+                "position": [36.715395916481505, 3.185303537966841],
+                "images": ["images/map/rectorat/rectorat1.png","images/map/rectorat/rectorat2.png","images/map/rectorat/rectorat3.jpg"]
+            },
+            {
+                "title": "bureau tabac",
+                "type": 0,
+                "description": "",
+                "position": [36.71614087376172, 3.1839688393285677],
+                "images": ["images/map/rectorat/rectorat1.png","images/map/rectorat/rectorat2.png","images/map/rectorat/rectorat3.jpg"]
+            },
+            {
+                "title": "village",
+                "type": 4,
+                "description": "Le village universitaire : qui regroupe\nune salle polyvalente (700 places),\nune cantine,\nune librairie de l'Office des publications universitaires pour la vente de livres,\nun bureau de poste,\nune gargotte .",
+                "position": [36.71221325662675, 3.1776294429155896],
+                "images": ["images/map/rectorat/rectorat1.png","images/map/rectorat/rectorat2.png","images/map/rectorat/rectorat3.jpg"]
+            },
+            {
+                "title": "la marquise",
+                "type": 0,
+                "description": "",
+                "position": [36.71278669300165, 3.176039969174851],
+                "images": ["images/map/rectorat/rectorat1.png","images/map/rectorat/rectorat2.png","images/map/rectorat/rectorat3.jpg"]
+            },
+            {
+                "title": "mckiffan",
+                "type": 0,
+                "description": "",
+                "position": [36.71286389216073, 3.175962935675875],
+                "images": ["images/map/rectorat/rectorat1.png","images/map/rectorat/rectorat2.png","images/map/rectorat/rectorat3.jpg"]
+            },
+            {
+                "title": "les 100 et 200 pair",
+                "type": 2,
+                "description": "",
+                "position": [36.712073515454286, 3.1817159538885127],
+                "images": ["images/map/rectorat/rectorat1.png","images/map/rectorat/rectorat2.png","images/map/rectorat/rectorat3.jpg"]
+            },
+            {
+                "title": "les 100 et 200 impair",
+                "type": 2,
+                "description": "",
+                "position": [36.710852286670686, 3.1793834720047354],
+                "images": ["images/map/rectorat/rectorat1.png","images/map/rectorat/rectorat2.png","images/map/rectorat/rectorat3.jpg"]
+            },
+            {
+                "title": "les 300 et 400 pair",
+                "type": 2,
+                "description": "",
+                "position": [36.71155158187623, 3.1821268246810477],
+                "images": ["images/map/rectorat/rectorat1.png","images/map/rectorat/rectorat2.png","images/map/rectorat/rectorat3.jpg"]
+            },
+            {
+                "title": "les 300 et 400 impair",
+                "type": 2,
+                "description": "",
+                "position": [36.71036581668713, 3.1798891591340097],
+                "images": ["images/map/rectorat/rectorat1.png","images/map/rectorat/rectorat2.png","images/map/rectorat/rectorat3.jpg"]
+            },
+            {
+                "title": "salle de sport",
+                "type": 4,
+                "description": "",
+                "position": [36.71317676428825, 3.175590099478761],
+                "images": ["images/map/rectorat/rectorat1.png","images/map/rectorat/rectorat2.png","images/map/rectorat/rectorat3.jpg"]
+            },
+            {
+                "title": "entré el jourf",
+                "type": 1,
+                "description": "",
+                "position": [36.71542228526649, 3.17691797835028],
+                "images": ["images/map/rectorat/rectorat1.png","images/map/rectorat/rectorat2.png","images/map/rectorat/rectorat3.jpg"]
+            },
+            {
+                "title": "el bab e sghira",
+                "type": 1,
+                "description": "",
+                "position": [36.71871374283479, 3.1819595394335156],
+                "images": ["images/map/rectorat/rectorat1.png","images/map/rectorat/rectorat2.png","images/map/rectorat/rectorat3.jpg"]
+            },
+            {
+                "title": "bab el westaniya",
+                "type": 1,
+                "description": "",
+                "position": [36.71617190938168, 3.1863009675106393],
+                "images": ["images/map/rectorat/rectorat1.png","images/map/rectorat/rectorat2.png","images/map/rectorat/rectorat3.jpg"]
+            },
+            {
+                "title": "entrée parking",
+                "type": 1,
+                "description": "",
+                "position": [36.71451923136778, 3.189138669528828],
+                "images": ["images/map/rectorat/rectorat1.png","images/map/rectorat/rectorat2.png","images/map/rectorat/rectorat3.jpg"]
+            },
+            {
+                "title": "buvette côté info",
+                "type": 0,
+                "description": "",
+                "position": [36.714823979007114, 3.1852545238144017],
+                "images": ["images/map/rectorat/rectorat1.png","images/map/rectorat/rectorat2.png","images/map/rectorat/rectorat3.jpg"]
+            },
+            {
+                "title": "resto universitaire",
+                "type": 0,
+                "description": "",
+                "position": [36.712166189400726, 3.176575294925995],
+                "images": ["images/map/rectorat/rectorat1.png","images/map/rectorat/rectorat2.png","images/map/rectorat/rectorat3.jpg"]
+            },
+            {
+                "title": "parking des etudiant",
+                "type": 1,
+                "description": "",
+                "position": [36.71158590398826, 3.1832982613683494],
+                "images": ["images/map/rectorat/rectorat1.png","images/map/rectorat/rectorat2.png","images/map/rectorat/rectorat3.jpg"]
+            },
+            {
+                "title": "sdacs",
+                "type": 3,
+                "description": "",
+                "position": [36.71379153892582, 3.177341964749151],
+                "images": ["images/map/rectorat/rectorat1.png","images/map/rectorat/rectorat2.png","images/map/rectorat/rectorat3.jpg"]
+            },
+            {
+                "title": "club ozon",
+                "type": 5,
+                "description": "",
+                "position": [36.71364498254254, 3.1760200034974257],
+                "images": ["images/map/rectorat/rectorat1.png","images/map/rectorat/rectorat2.png","images/map/rectorat/rectorat3.jpg"]
+            },
+            {
+                "title": "micro club ",
+                "type": 5,
+                "description": "",
+                "position": [36.7156837124124, 3.1852364697471756],
+                "images": ["images/map/rectorat/rectorat1.png","images/map/rectorat/rectorat2.png","images/map/rectorat/rectorat3.jpg"]
+            },
+            {
+                "title": "process club ",
+                "type": 5,
+                "description": "",
+                "position": [36.71364498254254, 3.1760200034974257],
+                "images": ["images/map/rectorat/rectorat1.png","images/map/rectorat/rectorat2.png","images/map/rectorat/rectorat3.jpg"]
+            },
+            {
+                "title": "physica club",
+                "type": 5,
+                "description": "",
+                "position": [36.71364498254254, 3.1760200034974257],
+                "images": ["images/map/rectorat/rectorat1.png","images/map/rectorat/rectorat2.png","images/map/rectorat/rectorat3.jpg"]
+            },
+            {
+                "title": "kiosk kader",
+                "type": 0,
+                "description": "",
+                "position": [36.71170284070337, 3.1825509652636685],
+                "images": ["images/map/rectorat/rectorat1.png","images/map/rectorat/rectorat2.png","images/map/rectorat/rectorat3.jpg"]
+            },
+            {
+                "title": "buvette 3",
+                "type": 0,
+                "description": "",
+                "position": [36.711172260877625, 3.178176227211145],
+                "images": ["images/map/rectorat/rectorat1.png","images/map/rectorat/rectorat2.png","images/map/rectorat/rectorat3.jpg"]
+            },
+            {
+                "title": "parking des enseignant",
+                "type": 1,
+                "description": "",
+                "position": [36.71588539829131, 3.1864476732066813],
+                "images": ["images/map/rectorat/rectorat1.png","images/map/rectorat/rectorat2.png","images/map/rectorat/rectorat3.jpg"]
+            },
+            {
+                "title": "parking coté rectorat",
+                "type": 1,
+                "description": "",
+                "position": [36.715293179589175, 3.1777073407574608],
+                "images": ["images/map/rectorat/rectorat1.png","images/map/rectorat/rectorat2.png","images/map/rectorat/rectorat3.jpg"]
+            },
+            {
+                "title": "club celec ",
+                "type": 5,
+                "description": "",
+                "position": [36.71629788847967, 3.1820704962310757],
+                "images": ["images/map/rectorat/rectorat1.png","images/map/rectorat/rectorat2.png","images/map/rectorat/rectorat3.jpg"]
+            },
+        
+        
+    
+        {
         "type": 3,
         "title": "Le Rectorat",
-        "description": "Le bâtiment regroupe les services centraux de l université : Cabinet du Recteur et salle du Conseil Les Vice- Rectorats Le secrétariat général de l université (Secrétaire Général, administrations du personnel et des finances) Services centraux de la scolarité.",
-        "images": ["images/map/map.png"],
+        "description": "\n\nLe bâtiment regroupe les services centraux de l université : Cabinet du Recteur et salle du Conseil Les Vice- Rectorats Le secrétariat général de l université (Secrétaire Général, administrations du personnel et des finances) Services centraux de la scolarité.",
+        "images": ["images/map/rectorat/rectorat1.png","images/map/rectorat/rectorat2.png","images/map/rectorat/rectorat3.jpg"],
         "position": [36.71401532272623,3.177216118935273]
     },
     {
         "type": 4,
         "title": "Le Bloc Pédagogique",
-        "description": " Est composé de: deux batiments Le bâtiment des classes A (salles 100 et 200) et le bâtiment des classes B (salles 300 et 400) -Les vingt-quatre amphithéâtres,-La Bibliothèque Universitaire, -L auditorium",
+        "description": "\n\n Est composé de: deux batiments Le bâtiment des classes A (salles 100 et 200) et le bâtiment des classes B (salles 300 et 400) -Les vingt-quatre amphithéâtres,-La Bibliothèque Universitaire, -L auditorium",
         "images": ["images/map/map.png"],
         "position": [36.711374908282366,3.180649346438428]
     },
     {
         "type": 4,
         "title": "La Bibliothèque Universitaire",
-        "description": "elle s'étend sur 7200 m² ; elle est ouverte aux étudiants (salle de 1200 places), aux enseignants et étudiants de post-graduation (salle de 72 places). Elle comprend divers services : acquisition, traitement, orientation et autres services administratifs. Elle dispose également d un service de recherche bibliographique automatisée, et d un service d informatique qui prête aide et assistance aux usagers afin d accéder aux différentes bases de données bibliographiques. Un espace internet et un accès Wifi sont également mis à la disposition des étudiants.",
+        "description": "\n\nelle s'étend sur 7200 m² ; elle est ouverte aux étudiants (salle de 1200 places), aux enseignants et étudiants de post-graduation (salle de 72 places). Elle comprend divers services : acquisition, traitement, orientation et autres services administratifs. Elle dispose également d un service de recherche bibliographique automatisée, et d un service d informatique qui prête aide et assistance aux usagers afin d accéder aux différentes bases de données bibliographiques. Un espace internet et un accès Wifi sont également mis à la disposition des étudiants.",
         "images": ["images/map/map.png"],
         "position": [36.71378310751998,3.181121415172571]
     },
@@ -104,16 +353,11 @@
         "description": "La faculté d’électronique a été crée en 1974. Ses missions principales sont orientées vers la recherche et la pédagogie. Les enseignement de base sont assurés à la grande partie des étudiants de la 1ère année LMD. Des enseignements approfondis sont assurés pour les étudiants de Licence et Master ainsi que des enseignements de poste de graduation débouchant aux diplômes de Magister et de Doctorat,Les Départements de la Faculté: -Informatique -Instrumentation et Automatique -Télécommunication -Electrotechnique Formation:  Les formations proposées dans la discipline Electronique sont :Licence (Nouveau Programme Socle commun) Licence (ancien Programme)  Master :Energies renouvelables / Energie Solaire, Génie des Systèmes Industriels et Tertiaires, Electrotechnique Industrielle, Réseaux Electriques, Contrôle de Processus et Robotique, Automatisation Industries et Process, Electronique et Photonique Appliquée, Ingénierie de l’Instrumentation Electronique, Télécommunication, Réseaux et Multimédia. Systèmes Intelligents de Communication. Systèmes de Télécommunications. Les formations proposées dans la discipline informatique sont : Licence : Licence Informatique académique(LIG), Licence Ingénierie des Systèmes d’Information et des Logiciels(ISIL), Licence Génie des Télécommunications et Réseaux(GTR). Master : Master Ingénierie du Logiciel (IL), Master Réseaux et Systèmes Distribués (RSD), Master Systèmes Informatiques Intelligents (SII), Master Sécurité des Systèmes Informatiques (SSI), Master Architectures Parallèles et Calcul Intensif         ",
         "images": ["images/map/map.png"],
         "position": [36.71607739713705,3.182118288196556]  
-    },
-    
-    {
-        "type": 0,
-        "title": "Entrée El-Djorf",
-        "description": "Entrée du coté d'El Djorf",
-        "images": ["images/map/map.png"],
-        "position": [36.71501095005206,3.183153620889915]
     }
+    
+    
 
     
 ]
 }
+

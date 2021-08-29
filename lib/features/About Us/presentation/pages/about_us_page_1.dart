@@ -18,104 +18,67 @@ class AboutUsPageSecondary extends StatelessWidget {
     return Scaffold(
       body: ListView(children: [
         SizedBox(height: 20,),
-        Center(
+        /*Center(
           child: CircleAvatar(
             radius: 50,
             backgroundColor: mainColor,
             backgroundImage: AssetImage("images/logowhite.png"),
           )
-        ),
-        SizedBox(
-          height: 10,
-        ),
+        ),*/
         Center(
           child: Text(
             "Project Initiative Club",
-            style: TextStyle(color: mainColor,fontSize: 20),
+            style: TextStyle(color: mainColor,fontSize: 25,fontFamily: "Righteous",),
           ),
         ),
-        SizedBox(
-          height: 10,
-        ),
         Center(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal:25,vertical: 30 ),
-            child: Container(
-              padding: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                boxShadow: [BoxShadow(
-                  offset: Offset.fromDirection(2,8),
-                  color: secondColor,
-                ),],
-                color: mainColor,
-                borderRadius: BorderRadius.circular(20)
-              ),
-              child: Text(
-                "Project Initiative est une famille universitaire à caractère entrepreneurial fondé en 2014 par des étudiants ambitieux, volontaires, visant à la promotion de l’esprit d’engagement, d’initiative et de leadership au sein de la communauté universitaire.",
-                style:  TextStyle(color: Colors.white),textAlign: TextAlign.center,
-              ),
-            ),
+          child: Container(
+            height: 3,
+            width: 70,
+            color: secondColor,
           ),
         ),
-        SizedBox(
-          height: 15,
-        ),
         Center(
-          child: Text(
-            "PI en Chiffres",
-            style: TextStyle(color: mainColor,fontSize: 15),
+          child: Container(
+            margin: EdgeInsets.only(top: 4),
+            height: 3,
+            width: 30,
+            color: secondColor,
           ),
         ),
         SizedBox(
           height: 10,
         ),
         Container(
-          padding: EdgeInsets.all(8),
+          width: 400,
+          height: 200,
           decoration: BoxDecoration(
-            border: Border(
-              top: BorderSide(width: 1,color: mainColor),
-              left: BorderSide(width: 1,color: mainColor),
-              right: BorderSide(width: 1,color: mainColor),
-              bottom: BorderSide(width: 1,color: mainColor),
-            )
-          ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              column("140", "Membres"),
-              VerticalDivider(
-                width: 5,
-                thickness: 5,
-                color: Colors.blueAccent,
-              ),
-              column("25k", "Abonnés"),
-              VerticalDivider(
-                width: 5,
-                thickness: 5,
-                color: Colors.blueAccent,
-              ),
-              column("60", "Evenements")
-            ],
+            image: DecorationImage(
+              image: AssetImage("images/PI.png"),
+            ),
           ),
         ),
-        SizedBox(
-          height: 25,
-        ),
-        Center(
-          child: Text(
-            "PI History",
-            style: TextStyle(color: mainColor),
+
+
+        Container(
+          width: 350,
+          height: 350,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("images/aboutus.png"),
+            ),
           ),
         ),
         SizedBox(
           height: 15,
         ),
+
+
+
         carouselWidget([
-          'images/pi/image_2.png',
-          'images/pi/image_2.png',
-          'images/pi/image_2.png',
-          'images/pi/image_2.png'
+          'images/green.jpg',
+          'images/tedx.jpg',
+          'images/tedx1.jpg',
         ], screenH, screenW,false)
         /*imageWidget('images/pi/image_2.png', screenW),
         SizedBox(

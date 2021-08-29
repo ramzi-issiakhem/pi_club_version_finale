@@ -38,8 +38,17 @@ class LoadedIsLiked extends NewsblocState {
   LoadedIsLiked({required this.isLiked});
 }
 
-class LoadedRemove extends NewsblocState {}
+class LoadedRemove extends NewsblocState {
+  final int type;
+  LoadedRemove({required this.type});
+}
 
-class LoadedForm extends NewsblocState {}
+class LoadedForm extends NewsblocState {
+  final int type;
+  LoadedForm({required this.type});
+}
 
-class LoadedEditForm extends NewsblocState {}
+class LoadedEditForm extends NewsblocState {
+  int newType;
+  LoadedEditForm({required this.newType});
+}

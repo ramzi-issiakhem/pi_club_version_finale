@@ -64,6 +64,17 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - images/
+    - images/spec.png
+    - images/prog.png
+    - images/quoimi.png
+    - images/map/rectorat/
+    - images/back1.png
+    - images/mail.png
+    - images/link.png
+    - images/face.png
+    - images/insta.png
+    - images/bio.jpg
     - images/sm.jpg
     - images/st.jpg
     - images/mi.jpg
@@ -106,6 +117,12 @@ flutter:
           - asset: fonts/AtkinsonHyperlegible-BoldItalic.ttf
           - asset: fonts/AtkinsonHyperlegible-Bold.ttf
             style: italic
+
+      - family: Righteous
+        fonts:
+          - asset: fonts/Righteous-Regular.ttf
+            weight: 700
+
       - family: Roboto Slab
         fonts:
           - asset: fonts/RobotoSlab-Bold.ttf

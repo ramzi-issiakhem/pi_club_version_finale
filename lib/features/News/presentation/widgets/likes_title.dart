@@ -17,9 +17,14 @@ Widget LikesAndModificationWidget(
         children: [
           GestureDetector(
               onTap: () {
-                BlocProvider.of<NewsblocBloc>(context).add(LikeClick(
-                    param:
-                        LikesParams(isAnAdd: false, type: type, news: news)));
+                isLiked
+                    ? BlocProvider.of<NewsblocBloc>(context).add(LikeClick(
+                        param: LikesParams(
+                            isAnAdd: false, type: type, news: news)))
+                    : BlocProvider.of<NewsblocBloc>(context).add(LikeClick(
+                        param: LikesParams(
+                            isAnAdd: true, type: type, news: news)));
+                isLiked = !isLiked;
               },
               child: Icon(
                 isLiked ? Icons.favorite : Icons.favorite_outline,

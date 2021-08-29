@@ -20,6 +20,7 @@ class PiNews extends StatelessWidget {
           } else if (state is Loading) {
             return LoadingWidget();
           } else if (state is LoadedLike) {
+            return PiNews();
           } else if (state is LoadedClubNews) {
             return ClubNewsWidget(
               entries: state.lists[0],

@@ -26,6 +26,8 @@ class UsthbNews extends StatelessWidget {
               entries: state.lists[0],
               isLikedTab: state.lists[1],
             );
+          } else if (state is LoadedLike) {
+            return UsthbNews();
           } else if (state is Error) {
             return Center(
               child: Container(

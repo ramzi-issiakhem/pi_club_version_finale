@@ -9,7 +9,7 @@ abstract class NewsRepository {
   /// Return Either the like for the news has been registered
   ///
   /// Return a [Failure] in case of any error .
-  Future<Either<Failure, bool>> manageLikes(
+  Future<Either<Failure, NewsEntity>> manageLikes(
       {required NewsEntity news, required int type, required bool isAnAdd});
 
   Future<Either<Failure, bool>> isLiked({required NewsEntity news});
@@ -17,12 +17,12 @@ abstract class NewsRepository {
   /// Return A List of the USTHB News
   ///
   /// Return a [Failure] in case of any error .
-  Future<Either<Failure, List<NewsEntity>>> getUsthbNews();
+  Future<Either<Failure, List<dynamic>>> getUsthbNews();
 
   /// Return A List of the Club News
   ///
   /// Return a [Failure] in case of any error .
-  Future<Either<Failure, List<NewsEntity>>> getClubNews();
+  Future<Either<Failure, List<dynamic>>> getClubNews();
 
   /// Return Either the news is added or not
   ///

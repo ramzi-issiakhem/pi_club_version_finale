@@ -19,44 +19,54 @@ class NewsRepositoryImpl implements NewsRepository {
       {required this.remoteDataSource, required this.localDataSource});
   // TODO Remove picture from storage
   @override
-  Future<Either<Failure, bool>> manageLikes(
+  Future<Either<Failure, NewsEntity>> manageLikes(
       {required NewsEntity news,
       required int type,
       required bool isAnAdd}) async {
     try {
       bool isLiked = await localDataSource.isLiked(news: news);
-
+      late NewsEntity newsEntity;
       if (isLiked && !isAnAdd) {
-        bool state = await remoteDataSource.manageLikes(news, type, isAnAdd);
+        newsEntity = await remoteDataSource.manageLikes(news, type, isAnAdd);
         await localDataSource.like(isAnAdd, news);
-      } else if (isAnAdd && !isLiked) {
-        bool state = await remoteDataSource.manageLikes(news, type, isAnAdd);
+        return Right(newsEntity);
+      } else {
+        newsEntity = await remoteDataSource.manageLikes(news, type, isAnAdd);
         await localDataSource.like(isAnAdd, news);
+        return Right(newsEntity);
       }
-
-      return Right(true);
     } on ServerException catch (e) {
       return Left(ServerFailure(message: e.message));
     }
   }
 
   @override
-  Future<Either<Failure, List<NewsEntity>>> getClubNews() async {
-    List<NewsEntity> list;
+  Future<Either<Failure, List<dynamic>>> getClubNews() async {
+    List<bool> likedTab = [];
     try {
-      list = await remoteDataSource.getClubNews();
-      return Right(list);
+      List<NewsEntity> news = await remoteDataSource.getClubNews();
+      for (int i = 0; i < news.length; i++) {
+        bool isLiked = await localDataSource.isLiked(news: news[i]);
+        likedTab.add(isLiked);
+      }
+
+      return Right([news, likedTab]);
     } on ServerException catch (exception) {
       return Left(ServerFailure(message: exception.message));
     }
   }
 
   @override
-  Future<Either<Failure, List<NewsEntity>>> getUsthbNews() async {
-    List<NewsEntity> list;
+  Future<Either<Failure, List<dynamic>>> getUsthbNews() async {
+    List<bool> likedTab = [];
     try {
-      list = await remoteDataSource.getUsthbNews();
-      return Right(list);
+      List<NewsEntity> news = await remoteDataSource.getUsthbNews();
+      for (int i = 0; i < news.length; i++) {
+        bool isLiked = await localDataSource.isLiked(news: news[i]);
+        likedTab.add(isLiked);
+      }
+
+      return Right([news, likedTab]);
     } on ServerException catch (exception) {
       return Left(ServerFailure(message: exception.message));
     }

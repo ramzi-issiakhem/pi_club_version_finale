@@ -7,10 +7,15 @@ import 'package:project_initiative_club_app/ressources/globals.dart';
 
 class NewsCard extends StatelessWidget {
   final NewsEntity news;
+  final bool isLiked;
   final Color color;
   final int type;
   const NewsCard(
-      {Key? key, required this.news, required this.color, required this.type})
+      {Key? key,
+      required this.isLiked,
+      required this.news,
+      required this.color,
+      required this.type})
       : super(key: key);
 
   @override
@@ -70,7 +75,8 @@ class NewsCard extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            LikesAndModificationWidget(news),
+                            LikesAndModificationWidget(
+                                news, isLiked, type, context),
                             SizedBox(
                               height: 1,
                             ),

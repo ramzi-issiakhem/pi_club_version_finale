@@ -8,13 +8,13 @@ import 'package:project_initiative_club_app/ressources/usecases/usecase.dart';
 
 enum NewsTypes { club, usthb }
 
-class LikesUseCase implements UseCase<bool, LikesParams> {
+class LikesUseCase implements UseCase<NewsEntity, LikesParams> {
   final NewsRepository newsRepository;
 
   LikesUseCase({required this.newsRepository});
 
   @override
-  Future<Either<Failure, bool>> call(LikesParams params) async {
+  Future<Either<Failure, NewsEntity>> call(LikesParams params) async {
     return await newsRepository.manageLikes(
         news: params.news, type: params.type, isAnAdd: params.isAnAdd);
   }

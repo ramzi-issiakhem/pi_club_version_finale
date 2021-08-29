@@ -22,7 +22,10 @@ class UsthbNews extends StatelessWidget {
           } else if (state is Loading) {
             return Center(child: LoadingWidget());
           } else if (state is LoadedUsthbNews) {
-            return UsthbNewsWidget(entries: state.list);
+            return UsthbNewsWidget(
+              entries: state.lists[0],
+              isLikedTab: state.lists[1],
+            );
           } else if (state is Error) {
             return Center(
               child: Container(
@@ -38,7 +41,9 @@ class UsthbNews extends StatelessWidget {
 // ignore: must_be_immutable
 class UsthbNewsWidget extends StatelessWidget {
   List<NewsEntity> entries;
-  UsthbNewsWidget({Key? key, required this.entries}) : super(key: key);
+  List<bool> isLikedTab = [];
+  UsthbNewsWidget({Key? key, required this.entries, required this.isLikedTab})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +53,7 @@ class UsthbNewsWidget extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           return Center(
               child: NewsCard(
+            isLiked: isLikedTab[index],
             color: mainColor,
             news: entries[index],
             type: 1,

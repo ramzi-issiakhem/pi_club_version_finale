@@ -44,13 +44,13 @@ class NewsblocBloc extends Bloc<NewsblocEvent, NewsblocState> {
       final failureOrList = await clubNewsUsecase.call(Club.NoParams());
 
       yield failureOrList.fold((failure) => Error(message: failure.message),
-          (list) => LoadedClubNews(list: list));
+          (list) => LoadedClubNews(lists: list));
     } else if (event is UsthbNewsEvent) {
       yield Loading();
       final failureOrList = await usthbNewsUsecase.call(Usthb.NoParams());
 
       yield failureOrList.fold((failure) => Error(message: failure.message),
-          (list) => LoadedUsthbNews(list: list));
+          (list) => LoadedUsthbNews(lists: list));
     } else if (event is FormEvent) {
       yield Loading();
 
@@ -62,7 +62,7 @@ class NewsblocBloc extends Bloc<NewsblocEvent, NewsblocState> {
 
       final failureOrInt = await likesUseCase.call(event.param);
       yield failureOrInt.fold((error) => Error(message: error.message),
-          (state) => LoadedLike(state: state));
+          (state) => LoadedLike(news: state));
     } else if (event is IsLiked) {
       yield Loading();
       final failureOrBool = await isLikedUseCase.call(event.news);

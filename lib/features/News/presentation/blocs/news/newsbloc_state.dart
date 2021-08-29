@@ -14,18 +14,18 @@ class EmptyClub extends NewsblocState {}
 class Loading extends NewsblocState {}
 
 class LoadedLike extends NewsblocState {
-  final bool state;
-  LoadedLike({required this.state});
+  final NewsEntity news;
+  LoadedLike({required this.news});
 }
 
 class LoadedClubNews extends NewsblocState {
-  final List<NewsEntity> list;
-  LoadedClubNews({required this.list});
+  final List<dynamic> lists;
+  LoadedClubNews({required this.lists});
 }
 
 class LoadedUsthbNews extends NewsblocState {
-  final List<NewsEntity> list;
-  LoadedUsthbNews({required this.list});
+  final List<dynamic> lists;
+  LoadedUsthbNews({required this.lists});
 }
 
 class Error extends NewsblocState {

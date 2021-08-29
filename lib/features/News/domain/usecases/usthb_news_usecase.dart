@@ -4,13 +4,13 @@ import 'package:project_initiative_club_app/features/News/domain/repository/news
 import 'package:project_initiative_club_app/ressources/errors/failures.dart';
 import 'package:project_initiative_club_app/ressources/usecases/usecase.dart';
 
-class UsthbNewsCase implements UseCase<List<NewsEntity>, NoParams> {
+class UsthbNewsCase implements UseCase<List<dynamic>, NoParams> {
   final NewsRepository newsRepository;
 
   UsthbNewsCase({required this.newsRepository});
 
   @override
-  Future<Either<Failure, List<NewsEntity>>> call(NoParams noParams) async {
+  Future<Either<Failure, List<dynamic>>> call(NoParams noParams) async {
     return await newsRepository.getUsthbNews();
   }
 }

@@ -17,7 +17,7 @@ abstract class NewsRemoteDataSource {
 
   Future<List<NewsEntity>> getClubNews();
 
-  Future<bool> manageLikes(NewsEntity news, int type, bool isAnAdd);
+  Future<NewsEntity> manageLikes(NewsEntity news, int type, bool isAnAdd);
 
   Future<bool> addNews(AddNewsParam param);
 
@@ -139,7 +139,8 @@ class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
   }
 
   @override
-  Future<bool> manageLikes(NewsEntity news, int type, bool isAnAdd) async {
+  Future<NewsEntity> manageLikes(
+      NewsEntity news, int type, bool isAnAdd) async {
     try {
       String collection;
       switch (type) {
@@ -154,18 +155,21 @@ class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
 
       if (isAnAdd) {
         number = news.likes + 1;
+        news.likes = number;
         await firestore
             .collection(collection)
             .doc(news.uid)
             .update({'lastModification': DateTime.now(), 'likes': number});
       } else {
         number = news.likes > 0 ? news.likes - 1 : 0;
+        news.likes = number;
         await firestore
             .collection(collection)
             .doc(news.uid)
             .update({'lastModification': DateTime.now(), 'likes': number});
       }
-      return true;
+
+      return news;
     } catch (e) {
       throw ServerException(e.toString());
     }
@@ -175,7 +179,7 @@ class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
   Future<List<NewsEntity>> getClubNews() async {
     try {
       final Query query = firestore.collection('pi_news');
-      return getNews(query);
+      return await getNews(query);
     } catch (e) {
       throw ServerException(e.toString());
     }

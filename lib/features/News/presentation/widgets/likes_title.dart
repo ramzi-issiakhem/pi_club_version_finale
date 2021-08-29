@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:project_initiative_club_app/features/News/domain/entities/newsEntity.dart';
+import 'package:project_initiative_club_app/features/News/domain/usecases/likes_usecase.dart';
+import 'package:project_initiative_club_app/features/News/presentation/blocs/news/newsbloc_bloc.dart';
 import 'package:project_initiative_club_app/ressources/globals.dart';
 
 // ignore: non_constant_identifier_names
-Widget LikesAndModificationWidget(NewsEntity news) {
+Widget LikesAndModificationWidget(
+    NewsEntity news, bool isLiked, int type, BuildContext context) {
   return Row(
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
@@ -12,9 +16,13 @@ Widget LikesAndModificationWidget(NewsEntity news) {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           GestureDetector(
-              onTap: () {},
+              onTap: () {
+                BlocProvider.of<NewsblocBloc>(context).add(LikeClick(
+                    param:
+                        LikesParams(isAnAdd: false, type: type, news: news)));
+              },
               child: Icon(
-                Icons.favorite,
+                isLiked ? Icons.favorite : Icons.favorite_outline,
                 color: Colors.white,
               )),
           SizedBox(

@@ -19,8 +19,12 @@ class PiNews extends StatelessWidget {
             BlocProvider.of<NewsblocBloc>(context).add(ClubNewsEvent());
           } else if (state is Loading) {
             return LoadingWidget();
+          } else if (state is LoadedLike) {
           } else if (state is LoadedClubNews) {
-            return ClubNewsWidget(entries: state.list);
+            return ClubNewsWidget(
+              entries: state.lists[0],
+              isLikedTab: state.lists[1],
+            );
           } else if (state is Error) {}
           return Container();
         }));
@@ -30,7 +34,9 @@ class PiNews extends StatelessWidget {
 // ignore: must_be_immutable
 class ClubNewsWidget extends StatelessWidget {
   List<NewsEntity> entries;
-  ClubNewsWidget({Key? key, required this.entries}) : super(key: key);
+  List<bool> isLikedTab;
+  ClubNewsWidget({Key? key, required this.entries, required this.isLikedTab})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +48,10 @@ class ClubNewsWidget extends StatelessWidget {
               child: Container(
             padding: EdgeInsets.only(top: 10),
             child: NewsCard(
-                color: Colors.orange.shade800, news: entries[index], type: 0),
+                color: Colors.orange.shade800,
+                isLiked: isLikedTab[index],
+                news: entries[index],
+                type: 0),
           ));
         });
   }

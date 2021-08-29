@@ -94,6 +94,7 @@ BitmapDescriptor iconEntry = BitmapDescriptor.defaultMarkerWithHue(0);
 BitmapDescriptor iconFood = BitmapDescriptor.defaultMarkerWithHue(0);
 BitmapDescriptor iconFaculty = BitmapDescriptor.defaultMarkerWithHue(0);
 BitmapDescriptor iconOther = BitmapDescriptor.defaultMarkerWithHue(0);
+BitmapDescriptor iconClub = BitmapDescriptor.defaultMarkerWithHue(0);
 var mapStyle = "";
 
 Map<String, dynamic> polylinesJson = {};

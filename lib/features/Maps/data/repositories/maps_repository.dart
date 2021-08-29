@@ -74,6 +74,10 @@ class MapsRepositoryImpl implements MapsRepository {
         ImageConfiguration(devicePixelRatio: 2.5, size: Size(10, 10)),
         'images/icons/icon_faculty_marker.png');
 
+    iconClub = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(devicePixelRatio: 2.5, size: Size(10, 10)),
+        'images/icons/icon_club_marker.png');
+
     /*iconEntry = await BitmapDescriptor.fromAssetImage(
         ImageConfiguration(devicePixelRatio: 2.5),
         'icons/icon_entry_marker.png');

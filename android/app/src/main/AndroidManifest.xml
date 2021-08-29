@@ -2,7 +2,7 @@
     package="com.example.project_initiative_club_app">
    <application
    android:requestLegacyExternalStorage="true"
-        android:label="project_initiative_club_app"
+        android:label="Project Initiative Club"
         android:icon="@mipmap/ic_launcher"
         android:name="androidx.multidex.MultiDexApplication">
 
